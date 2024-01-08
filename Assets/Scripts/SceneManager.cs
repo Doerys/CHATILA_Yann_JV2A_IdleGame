@@ -17,16 +17,22 @@ public class SceneManager : MonoBehaviour
 
     private bool autoClick_unlocked = false;
 
+    public GameObject myCanvas;
+    public GameObject prefabEnemy;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(prefabEnemy, myCanvas.transform);
+        }
     }
 
     public void IncrementScore_Click()
@@ -41,6 +47,12 @@ public class SceneManager : MonoBehaviour
         scoreUI.text = "Happiness : " + scoreGame;
     }
 
+    public void SpawnDice()
+    {
+        //Initiate
+        
+        //int healthDice
+    }
 
     public void ImproveClick()
     {
