@@ -9,6 +9,7 @@ public class DicesScriptableObject : ScriptableObject
 {
 
     public int maxValue, minValue;
+    public float cooldown;
     public Sprite sprite;
 
 }

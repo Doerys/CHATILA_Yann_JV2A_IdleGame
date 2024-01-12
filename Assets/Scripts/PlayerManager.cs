@@ -1,16 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class PlayerManager : MonoBehaviour
 {
 
-    public int health;
+    public float healthMax;
+    private float healthCurrent;
+    public bool isAlive;
+    public Image lifeBar;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        healthCurrent = healthMax;
     }
 
     // Update is called once per frame
@@ -21,13 +27,15 @@ public class PlayerManager : MonoBehaviour
 
     public void LoseHealth(int damage)
     {
-        health -= damage;
+        healthCurrent -= damage;
+        lifeBar.fillAmount = healthCurrent / healthMax;
 
-        if (health <= 0)
+        //Debug.Log(healthCurrent + "damage" + damage);
+
+        if (healthCurrent <= 0)
         {
-            health = 0;
-            
-            //DEAD A CODER
+            healthCurrent = 0;
+            isAlive = false;
         }
     }
 }

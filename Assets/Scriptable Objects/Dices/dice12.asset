@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxValue: 1
   minValue: 12
-  enemyImage: {fileID: 21300000, guid: cf5b332c652023d4c938807f6e2a4ade, type: 3}
+  cooldown: 5
+  sprite: {fileID: 21300000, guid: cf5b332c652023d4c938807f6e2a4ade, type: 3}

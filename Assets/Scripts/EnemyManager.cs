@@ -10,12 +10,36 @@ public class EnemyManager : MonoBehaviour
 
     public PlayerManager myPlayer;
 
+    public Image timerEnemyBar;
+
     private int health, powerAttack, goldLoot;
     private float speedAttack;
     private string nameMonster;
 
     // Start is called before the first frame update
     void Start()
+    {
+        SpawnEnemy();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (speedAttack > 0)
+        {
+            speedAttack -= Time.deltaTime;
+            timerEnemyBar.fillAmount = speedAttack / enemyData.speedAttack;
+        }
+
+        else
+        {
+            myPlayer.LoseHealth(powerAttack);
+            speedAttack = enemyData.speedAttack;
+        }
+        //LaunchAttack();
+    }
+
+    public void SpawnEnemy()
     {
         // Choose randomly one enemy between all existing and make it appear
         enemyData = allEnemiesDatas[Random.Range(0, allEnemiesDatas.Length)];
@@ -28,28 +52,20 @@ public class EnemyManager : MonoBehaviour
         goldLoot = enemyData.goldLoot;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        LaunchAttack();
-    }
-
     // timer decreasing before attack
     public void LaunchAttack()
     {
 
-        if (speedAttack > 0)
-        {
-            speedAttack -= Time.deltaTime;
-        }
 
-        else
-        {
-            //myPlayer;
-            //speedAttack = enemyData.speedAttack;
-        }
-        
+    }
 
-        
+    public void GetHit()
+    {
+        health--;
+
+        if (health <= 0)
+        {
+            SpawnEnemy();
+        }
     }
 }
