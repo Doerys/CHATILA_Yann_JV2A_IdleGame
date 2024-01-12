@@ -15,8 +15,6 @@ public class SceneManager : MonoBehaviour
     public int costClick;
     public int costAutoClick;
 
-    public Vector3 enemyPosition;
-
     private bool autoClick_unlocked = false;
 
     public GameObject myCanvas;
@@ -40,13 +38,13 @@ public class SceneManager : MonoBehaviour
     public void IncrementScore_Click()
     {
         scoreGame += powerClick;
-        scoreUI.text = scoreGame.ToString();
+        scoreUI.text = "Happiness : " + scoreGame;
     }
 
     public void IncrementScore_AutoClick(int _powerAutoClick)
     {
         scoreGame += _powerAutoClick;
-        scoreUI.text = scoreGame.ToString();
+        scoreUI.text = "Happiness : " + scoreGame;
     }
 
     public void SpawnDice()
@@ -65,7 +63,7 @@ public class SceneManager : MonoBehaviour
             costClick *= 5;
 
             costImprovementUI.text = "Improve Click (-" + costClick + ")";
-            scoreUI.text = scoreGame.ToString();
+            scoreUI.text = "Happiness : " + scoreGame;
         }
     }
 
@@ -77,7 +75,7 @@ public class SceneManager : MonoBehaviour
             scoreGame -= 50;
             StartCoroutine(AutoClicker());
             costImprovementAutoUI.text = "Improve Auto Click (-" + costAutoClick + ")";
-            scoreUI.text = scoreGame.ToString();
+            scoreUI.text = "Happiness : " + scoreGame;
         }
 
         else if (scoreGame >= costAutoClick)
@@ -87,17 +85,7 @@ public class SceneManager : MonoBehaviour
             costAutoClick *= 5;
 
             costImprovementAutoUI.text = "Improve Auto Click (-" + costAutoClick + ")";
-            scoreUI.text = scoreGame.ToString();
-        }
-    }
-
-    public void createEnemy()
-    {
-        int selectEnemy = Random.Range(1, 6);
-
-        if (selectEnemy > 0)
-        {
-            //Instantiate();
+            scoreUI.text = "Happiness : " + scoreGame;
         }
     }
 
@@ -105,10 +93,9 @@ public class SceneManager : MonoBehaviour
     {
         while (true)
         {
+            Debug.Log("HELLO");
             IncrementScore_AutoClick(powerAutoClick);
             yield return new WaitForSeconds(1);
         }
     }
-
-
 }
