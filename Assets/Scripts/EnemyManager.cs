@@ -17,7 +17,6 @@ public class EnemyManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         // Choose randomly one enemy between all existing and make it appear
         enemyData = allEnemiesDatas[Random.Range(0, allEnemiesDatas.Length)];
         gameObject.GetComponent<Image>().sprite = enemyData.sprite;
@@ -35,6 +34,7 @@ public class EnemyManager : MonoBehaviour
         LaunchAttack();
     }
 
+    // timer decreasing before attack
     public void LaunchAttack()
     {
 
@@ -45,8 +45,8 @@ public class EnemyManager : MonoBehaviour
 
         else
         {
-            myPlayer;
-            speedAttack = enemyData.speedAttack;
+            //myPlayer;
+            //speedAttack = enemyData.speedAttack;
         }
         
 
