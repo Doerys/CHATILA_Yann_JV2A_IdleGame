@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[CreateAssetMenu(fileName = "dice", menuName = "DicesData", order = 100)]
+[CreateAssetMenu(fileName = "dice", menuName = "DataDices", order = 100)]
 
-public class DicesScriptableObject : ScriptableObject
+public class DicesScriptableObject : PowersScriptableObject
 {
 
     public int maxValue, minValue;
