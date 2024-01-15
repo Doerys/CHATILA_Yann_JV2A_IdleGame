@@ -11,11 +11,13 @@ public class EnemyManager : MonoBehaviour
 
     public PlayerManager myPlayer;
 
+    public Animator enemyAnimator;
+
     public Image spriteEnemy, timerEnemyBar;
     public TextMeshProUGUI powerAttackText, healthText, nameText;
 
     private int health, powerAttack, goldLoot;
-    private float speedAttack;
+    private float timerAttack;
     private string nameMonster;
 
     // Start is called before the first frame update
@@ -28,16 +30,16 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (speedAttack > 0)
+        if (timerAttack > 0)
         {
-            speedAttack -= Time.deltaTime;
-            timerEnemyBar.fillAmount = speedAttack / enemyData.speedAttack;
+            timerAttack += Time.deltaTime;
+            timerEnemyBar.fillAmount = timerAttack * enemyData.speedAttack;
         }
 
         else
         {
             myPlayer.LoseHealth(powerAttack);
-            speedAttack = enemyData.speedAttack;
+            timerAttack = enemyData.speedAttack;
         }
         //LaunchAttack();
     }
@@ -49,13 +51,11 @@ public class EnemyManager : MonoBehaviour
         spriteEnemy.GetComponent<Image>().sprite = enemyData.sprite;
 
         // load statistics
-        nameMonster = enemyData.nameMonster;
         health = enemyData.health;
         powerAttack = Random.Range(enemyData.minPowerAttack, enemyData.maxPowerAttack);
-        speedAttack = enemyData.speedAttack;
-        goldLoot = enemyData.goldLoot;
+        timerAttack = enemyData.speedAttack;
 
-        nameText.text = nameMonster;
+        nameText.text = enemyData.nameMonster;
         healthText.text = health.ToString();
         powerAttackText.text = powerAttack.ToString();
     }
@@ -72,10 +72,12 @@ public class EnemyManager : MonoBehaviour
         health--;
         healthText.text = health.ToString();
 
+        enemyAnimator.SetTrigger("HitTrigger");
+
         if (health <= 0)
         {
             SpawnEnemy();
-            myPlayer.LootGold(goldLoot);
+            myPlayer.LootGold(enemyData.goldLoot);
         }
     }
 }

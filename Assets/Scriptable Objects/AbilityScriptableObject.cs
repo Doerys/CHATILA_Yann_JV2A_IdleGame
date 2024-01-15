@@ -8,5 +8,5 @@ using UnityEngine.UI;
 public class AbilityScriptableObject : ScriptableObject
 {
     public string nameAbility;
-    public int upgradeLevel, costUpgrade;
+    public int upgradeLevel, costUpgrade, upgradeStep;
 }

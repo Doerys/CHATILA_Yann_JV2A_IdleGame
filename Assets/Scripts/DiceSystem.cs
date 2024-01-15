@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DiceSystem : MonoBehaviour
+public class DiceSystem : PowerSystem
 {
     public DicesScriptableObject diceData;
 
