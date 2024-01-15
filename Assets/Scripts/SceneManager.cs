@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SceneManager : MonoBehaviour
 {
-    public TextMeshProUGUI scoreUI;
+    public TextMeshProUGUI goldText;
     public TextMeshProUGUI costImprovementUI;
     public TextMeshProUGUI costImprovementAutoUI;
 
@@ -38,13 +38,13 @@ public class SceneManager : MonoBehaviour
     public void IncrementScore_Click()
     {
         scoreGame += powerClick;
-        scoreUI.text = "Happiness : " + scoreGame;
+        goldText.text = "Happiness : " + scoreGame;
     }
 
     public void IncrementScore_AutoClick(int _powerAutoClick)
     {
         scoreGame += _powerAutoClick;
-        scoreUI.text = "Happiness : " + scoreGame;
+        goldText.text = "Happiness : " + scoreGame;
     }
 
     public void SpawnDice()
@@ -63,7 +63,7 @@ public class SceneManager : MonoBehaviour
             costClick *= 5;
 
             costImprovementUI.text = "Improve Click (-" + costClick + ")";
-            scoreUI.text = "Happiness : " + scoreGame;
+            goldText.text = "Happiness : " + scoreGame;
         }
     }
 
@@ -75,7 +75,7 @@ public class SceneManager : MonoBehaviour
             scoreGame -= 50;
             StartCoroutine(AutoClicker());
             costImprovementAutoUI.text = "Improve Auto Click (-" + costAutoClick + ")";
-            scoreUI.text = "Happiness : " + scoreGame;
+            goldText.text = "Happiness : " + scoreGame;
         }
 
         else if (scoreGame >= costAutoClick)
@@ -85,7 +85,7 @@ public class SceneManager : MonoBehaviour
             costAutoClick *= 5;
 
             costImprovementAutoUI.text = "Improve Auto Click (-" + costAutoClick + ")";
-            scoreUI.text = "Happiness : " + scoreGame;
+            goldText.text = "Happiness : " + scoreGame;
         }
     }
 

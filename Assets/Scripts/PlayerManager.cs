@@ -8,14 +8,17 @@ using Unity.VisualScripting;
 public class PlayerManager : MonoBehaviour
 {
 
-    public float healthMax;
-    private float healthCurrent;
+    private float healthMax = 15, healthCurrent;
+    private int gold;
     public bool isAlive;
-    public Image lifeBar;
+    public Image lifeBar, manaBar;
+    public SceneManager sceneManager;
+    public TextMeshProUGUI goldText;
 
     // Start is called before the first frame update
     void Start()
     {
+        sceneManager = FindObjectOfType<SceneManager>();
         healthCurrent = healthMax;
     }
 
@@ -37,5 +40,11 @@ public class PlayerManager : MonoBehaviour
             healthCurrent = 0;
             isAlive = false;
         }
+    }
+
+    public void LootGold(int goldLoot)
+    {
+        gold += goldLoot;
+        goldText.text = gold.ToString();
     }
 }

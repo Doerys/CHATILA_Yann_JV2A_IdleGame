@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -10,7 +11,8 @@ public class EnemyManager : MonoBehaviour
 
     public PlayerManager myPlayer;
 
-    public Image timerEnemyBar;
+    public Image spriteEnemy, timerEnemyBar;
+    public TextMeshProUGUI powerAttackText, healthText, nameText;
 
     private int health, powerAttack, goldLoot;
     private float speedAttack;
@@ -19,6 +21,7 @@ public class EnemyManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        myPlayer = FindObjectOfType<PlayerManager>();
         SpawnEnemy();
     }
 
@@ -43,13 +46,18 @@ public class EnemyManager : MonoBehaviour
     {
         // Choose randomly one enemy between all existing and make it appear
         enemyData = allEnemiesDatas[Random.Range(0, allEnemiesDatas.Length)];
-        gameObject.GetComponent<Image>().sprite = enemyData.sprite;
+        spriteEnemy.GetComponent<Image>().sprite = enemyData.sprite;
 
         // load statistics
+        nameMonster = enemyData.nameMonster;
         health = enemyData.health;
         powerAttack = Random.Range(enemyData.minPowerAttack, enemyData.maxPowerAttack);
         speedAttack = enemyData.speedAttack;
         goldLoot = enemyData.goldLoot;
+
+        nameText.text = nameMonster;
+        healthText.text = health.ToString();
+        powerAttackText.text = powerAttack.ToString();
     }
 
     // timer decreasing before attack
@@ -62,10 +70,12 @@ public class EnemyManager : MonoBehaviour
     public void GetHit()
     {
         health--;
+        healthText.text = health.ToString();
 
         if (health <= 0)
         {
             SpawnEnemy();
+            myPlayer.LootGold(goldLoot);
         }
     }
 }
