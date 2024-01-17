@@ -8,8 +8,8 @@ using Unity.VisualScripting;
 public class PlayerManager : MonoBehaviour
 {
 
-    private float healthMax = 15, healthCurrent;
-    private int gold;
+    public float healthMax = 15, healthCurrent;
+    public int currentGold, currentMana;
     public bool isAlive;
     public Image lifeBar, manaBar;
     public SceneManager sceneManager;
@@ -31,7 +31,7 @@ public class PlayerManager : MonoBehaviour
     public void LoseHealth(int damage)
     {
         healthCurrent -= damage;
-        lifeBar.fillAmount = healthCurrent / healthMax;
+        ChangeHealthUI();
 
         //Debug.Log(healthCurrent + "damage" + damage);
 
@@ -42,9 +42,19 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    public void ChangeHealthUI()
+    {
+        lifeBar.fillAmount = healthCurrent / healthMax;
+    }
+
     public void LootGold(int goldLoot)
     {
-        gold += goldLoot;
-        goldText.text = gold.ToString();
+        currentGold += goldLoot;
+        goldText.text = currentGold.ToString();
+    }
+
+    public void ConsumeMana(int costMana)
+    {
+        currentMana -= costMana;
     }
 }

@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38d7cc9cbc458df41a049397ce1462bc, type: 3}
-  m_Name: MultiHit
+  m_Script: {fileID: 11500000, guid: 56ca41e2d7963934396659ec233ad375, type: 3}
+  m_Name: CriticalDamage
   m_EditorClassIdentifier: 
   nameAbility: 
   upgradeLevel: 0
   costUpgrade: 0
-  costMana: 0
+  upgradeStep: 0

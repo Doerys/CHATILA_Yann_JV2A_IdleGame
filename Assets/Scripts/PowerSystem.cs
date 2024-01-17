@@ -15,8 +15,4 @@ public class PowerSystem : AbilitySystem
     {
         
     }
-    public void ConsumeMana()
-    {
-
-    }
 }

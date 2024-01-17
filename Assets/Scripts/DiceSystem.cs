@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DiceSystem : PowerSystem
+public class DiceSystem : AbilitySystem
 {
-    public DicesScriptableObject diceData;
-
     private int maxValue, minValue, powerDice;
 
     // Start is called before the first frame update
@@ -15,8 +13,10 @@ public class DiceSystem : PowerSystem
         //gameObject.GetComponent<Image>().sprite = diceData.sprite;
 
         // load statistics
-        maxValue = diceData.maxValue;
-        minValue = diceData.minValue;
+        //maxValue = dataAbility.maxValue;
+        //minValue = dataAbility.minValue;
+
+        UpgradePower();
     }
 
     // Update is called once per frame
@@ -27,6 +27,6 @@ public class DiceSystem : PowerSystem
 
     public void RollDice()
     {
-        powerDice = Random.Range(diceData.minValue, diceData.maxValue);
+        /*powerDice = Random.Range(dataAbility.minValue, dataAbility.maxValue);*/
     }
 }

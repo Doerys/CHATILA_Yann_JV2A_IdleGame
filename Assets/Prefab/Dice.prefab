@@ -88,4 +88,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43af6d7dde97c594c851295cfbf8dfce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diceData: {fileID: 0}
+  dataAbility: {fileID: 11400000, guid: a6614808a7d8dc447945995eb67e284a, type: 2}
+  costUpgradeText: {fileID: 0}
