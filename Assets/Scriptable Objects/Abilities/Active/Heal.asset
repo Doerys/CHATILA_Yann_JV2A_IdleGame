@@ -15,7 +15,9 @@ MonoBehaviour:
   nameAbility: Heal
   upgradeLevel: 1
   costUpgrade: 5
-  upgradeStep: 1
-  costMana: 0
+  power: 1
+  costMana: 10
+  timerCooldown: 5
   useMana: 1
+  autoPower: 0
   sprite: {fileID: 21300000, guid: 8ee0a87bb1860b043be1aeb354e1fd77, type: 3}

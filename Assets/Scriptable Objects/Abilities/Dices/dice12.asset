@@ -12,7 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32b38c4d6c54607408dee2ab6575cb0e, type: 3}
   m_Name: dice12
   m_EditorClassIdentifier: 
+  nameAbility: 
+  upgradeLevel: 0
+  costUpgrade: 0
+  power: 0
+  costMana: 0
+  timerCooldown: 2
+  useMana: 1
+  autoPower: 0
+  sprite: {fileID: 21300000, guid: 2ede1a56058d3004d94140241dc9d1d1, type: 3}
   maxValue: 1
   minValue: 12
-  cooldown: 5
-  sprite: {fileID: 21300000, guid: cf5b332c652023d4c938807f6e2a4ade, type: 3}

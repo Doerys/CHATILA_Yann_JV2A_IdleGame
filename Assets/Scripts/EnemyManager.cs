@@ -9,11 +9,14 @@ public class EnemyManager : MonoBehaviour
     public EnemyScriptableObject[] allEnemiesDatas;
     private EnemyScriptableObject enemyData;
 
+    public SceneManager dataScene;
+
     public PlayerManager myPlayer;
 
-    private int health, powerAttack, goldLoot;
-    private float timerAttack;
-    private string nameMonster;
+    private int health, powerAttack;
+    private float timerAttack = 0;
+
+    public bool isActive;
 
     public Image spriteEnemy, timerEnemyBar;
     public TextMeshProUGUI powerAttackText, healthText, nameText;
@@ -23,7 +26,18 @@ public class EnemyManager : MonoBehaviour
     void Start()
     {
         myPlayer = FindObjectOfType<PlayerManager>();
-        StartCoroutine(CooldownSpawnEnemy());
+        dataScene = FindObjectOfType<SceneManager>();
+
+        if (isActive)
+        {
+            SpawnEnemy();
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
+        
+        //StartCoroutine(CooldownSpawnEnemy());
     }
 
     // Update is called once per frame
@@ -32,12 +46,12 @@ public class EnemyManager : MonoBehaviour
         if (timerAttack > 0 && health > 0)
         {
             timerAttack -= Time.deltaTime;
-            timerEnemyBar.fillAmount = timerAttack / enemyData.speedAttack;
+            timerEnemyBar.fillAmount = 1 - (timerAttack / enemyData.speedAttack);
         }
 
         else if (health > 0)
         {
-            myPlayer.LoseHealth(powerAttack);
+            myPlayer.ChangeHealth(powerAttack, -1);
             timerAttack = enemyData.speedAttack;
         }
         //LaunchAttack();
@@ -67,16 +81,35 @@ public class EnemyManager : MonoBehaviour
 
     }
 
-    public void GetHit()
+    public void ClickEnemy()
     {
-        health--;
+        if (myPlayer.multiHitActive)
+        {
+            for (int i = 0; i < dataScene.allEnemies.Length; i++)
+            {
+                if (dataScene.allEnemies[i].isActive)
+                {
+                    dataScene.allEnemies[i].GetHit(myPlayer.powerClick);
+                }
+            }
+        }
+        else
+        {
+            GetHit(myPlayer.powerClick);
+        }
+    }
+
+    public void GetHit(int powerPlayerAttack)
+    {
+        health -= powerPlayerAttack;
         healthText.text = health.ToString();
 
         enemyAnimator.SetTrigger("HitTrigger");
 
         if (health <= 0)
         {
-            StartCoroutine(CooldownSpawnEnemy());
+            //StartCoroutine(CooldownSpawnEnemy());
+            SpawnEnemy();
             myPlayer.LootGold(enemyData.goldLoot);
         }
     }

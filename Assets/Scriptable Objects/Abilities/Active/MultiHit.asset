@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56ca41e2d7963934396659ec233ad375, type: 3}
   m_Name: MultiHit
   m_EditorClassIdentifier: 
-  nameAbility: 
-  upgradeLevel: 0
-  costUpgrade: 0
-  upgradeStep: 0
+  nameAbility: MultiHit
+  upgradeLevel: 1
+  costUpgrade: 5
+  upgradeStep: 1
+  costMana: 5
+  timerCooldown: 5
+  useMana: 1
+  sprite: {fileID: 21300000, guid: f3d875ba12bbe2544b2aba265c5c0753, type: 3}

@@ -20,6 +20,8 @@ public class SceneManager : MonoBehaviour
     public GameObject myCanvas;
     public GameObject prefabEnemy;
 
+    public EnemyManager[] allEnemies;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -93,7 +95,6 @@ public class SceneManager : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log("HELLO");
             IncrementScore_AutoClick(powerAutoClick);
             yield return new WaitForSeconds(1);
         }

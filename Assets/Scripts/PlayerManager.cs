@@ -7,19 +7,23 @@ using Unity.VisualScripting;
 
 public class PlayerManager : MonoBehaviour
 {
-
-    public float healthMax = 15, healthCurrent;
-    public int currentGold, currentMana;
-    public bool isAlive;
+    public float maxHealth = 15, currentHealth, maxMana = 15, currentMana;
+    public int currentGold;
+    public int powerClick;
+    public bool isAlive, multiHitActive;
     public Image lifeBar, manaBar;
     public SceneManager sceneManager;
-    public TextMeshProUGUI goldText;
+    public TextMeshProUGUI currentHealthText, currentManaText, goldText;
 
     // Start is called before the first frame update
     void Start()
     {
         sceneManager = FindObjectOfType<SceneManager>();
-        healthCurrent = healthMax;
+        currentHealth = maxHealth;
+        currentMana = maxMana;
+
+        ChangeUI(currentHealthText, currentHealth, maxHealth, lifeBar);
+        ChangeUI(currentManaText, currentMana, maxMana, manaBar);
     }
 
     // Update is called once per frame
@@ -28,33 +32,49 @@ public class PlayerManager : MonoBehaviour
         
     }
 
-    public void LoseHealth(int damage)
+    public void ChangeHealth(int power, int damageOrHeal)
     {
-        healthCurrent -= damage;
-        ChangeHealthUI();
+        currentHealth += power * damageOrHeal;
+        ChangeUI(currentHealthText, currentHealth, maxHealth, lifeBar);
 
         //Debug.Log(healthCurrent + "damage" + damage);
 
-        if (healthCurrent <= 0)
+        // si le soin dépasse la limite max de vie, réajuste au maximum
+        if (currentHealth > maxHealth)
         {
-            healthCurrent = 0;
+            currentHealth = maxHealth;
+        }
+
+        // si la vie arrive en dessous de 0
+        if (currentHealth <= 0)
+        {
+            currentHealth = 0;
             isAlive = false;
         }
     }
 
-    public void ChangeHealthUI()
+    public void ChangeMana(int power, int costManaOrRegen)
     {
-        lifeBar.fillAmount = healthCurrent / healthMax;
+        currentMana += power * costManaOrRegen;
+
+        // si le soin dépasse la limite max de vie, réajuste au maximum
+        if (currentMana > maxMana)
+        {
+            currentMana = maxMana;
+        }
+
+        ChangeUI(currentManaText, currentMana, maxMana, manaBar);
+    }
+
+    public void ChangeUI(TextMeshProUGUI textUI, float currentStat, float maxStat, Image bar)
+    {
+        textUI.text = currentStat.ToString();
+        bar.fillAmount = currentStat / maxStat;
     }
 
     public void LootGold(int goldLoot)
     {
         currentGold += goldLoot;
         goldText.text = currentGold.ToString();
-    }
-
-    public void ConsumeMana(int costMana)
-    {
-        currentMana -= costMana;
     }
 }
