@@ -8,9 +8,9 @@ using UnityEngine.UI;
 public class EnemyScriptableObject : ScriptableObject
 {
 
-    public int health, minPowerAttack, maxPowerAttack, goldLoot;
-    public float speedAttack;
-    public string nameMonster;
-    public Sprite sprite;
+    public int [] health, minPowerAttack, maxPowerAttack, goldLoot, level;
+    public float [] speedAttack;
+    public string [] nameMonster;
+    public Sprite [] spriteIdle, spriteHit;
 
 }

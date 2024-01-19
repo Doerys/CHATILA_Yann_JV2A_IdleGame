@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -13,14 +14,14 @@ public class EnemyManager : MonoBehaviour
 
     public PlayerManager myPlayer;
 
-    private int health, powerAttack;
+    private int levelMonster, health, powerAttack;
     private float timerAttack = 0;
 
     public bool isActive;
 
     public Image spriteEnemy, timerEnemyBar;
     public TextMeshProUGUI powerAttackText, healthText, nameText;
-    public Animator enemyAnimator;
+    public Animator enemyAnimator, heartAnimator, hitAnimator;
 
     // Start is called before the first frame update
     void Start()
@@ -46,13 +47,16 @@ public class EnemyManager : MonoBehaviour
         if (timerAttack > 0 && health > 0)
         {
             timerAttack -= Time.deltaTime;
-            timerEnemyBar.fillAmount = 1 - (timerAttack / enemyData.speedAttack);
+            timerEnemyBar.fillAmount = 1 - (timerAttack / enemyData.speedAttack[levelMonster]);
+
+            hitAnimator.SetFloat("cooldownAttack", 1 - (timerAttack / enemyData.speedAttack[levelMonster]));
         }
 
         else if (health > 0)
         {
             myPlayer.ChangeHealth(powerAttack, -1);
-            timerAttack = enemyData.speedAttack;
+            timerAttack = enemyData.speedAttack[levelMonster];
+            hitAnimator.SetTrigger("hitEnemy");
         }
         //LaunchAttack();
     }
@@ -61,15 +65,17 @@ public class EnemyManager : MonoBehaviour
     {
         // Choose randomly one enemy between all existing and make it appear
         enemyData = allEnemiesDatas[Random.Range(0, allEnemiesDatas.Length)];
-        spriteEnemy.GetComponent<Image>().sprite = enemyData.sprite;
+        levelMonster = enemyData.level[dataScene.currentDifficulty];
+
+        spriteEnemy.GetComponent<Image>().sprite = enemyData.spriteIdle[levelMonster];
 
         // load statistics
-        health = enemyData.health;
-        powerAttack = Random.Range(enemyData.minPowerAttack, enemyData.maxPowerAttack);
-        timerAttack = enemyData.speedAttack;
+        health = enemyData.health[levelMonster];
+        powerAttack = Random.Range(enemyData.minPowerAttack[levelMonster], enemyData.maxPowerAttack[levelMonster]);
+        timerAttack = enemyData.speedAttack[levelMonster];
 
         // load texts
-        nameText.text = enemyData.nameMonster;
+        nameText.text = enemyData.nameMonster[levelMonster];
         healthText.text = health.ToString();
         powerAttackText.text = powerAttack.ToString();
     }
@@ -104,13 +110,16 @@ public class EnemyManager : MonoBehaviour
         health -= powerPlayerAttack;
         healthText.text = health.ToString();
 
-        enemyAnimator.SetTrigger("HitTrigger");
+        heartAnimator.SetTrigger("hitTrigger");
+        spriteEnemy.sprite = enemyData.spriteHit[levelMonster];
+
+        StartCoroutine(ReturnNormalSprite());
 
         if (health <= 0)
         {
             //StartCoroutine(CooldownSpawnEnemy());
             SpawnEnemy();
-            myPlayer.LootGold(enemyData.goldLoot);
+            myPlayer.LootGold(enemyData.goldLoot[levelMonster]);
         }
     }
     public IEnumerator CooldownSpawnEnemy ()
@@ -118,6 +127,13 @@ public class EnemyManager : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         SpawnEnemy();
+    }
+
+    public IEnumerator ReturnNormalSprite()
+    {
+        yield return new WaitForSeconds(.2f);
+
+        spriteEnemy.sprite = enemyData.spriteIdle[levelMonster];
     }
 
 }

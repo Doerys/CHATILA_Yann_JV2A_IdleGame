@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 802b265da1611cb4581f4ea4b486327b, type: 3}
+  m_Name: waterMonster
+  m_EditorClassIdentifier: 
+  health: 0a000000000000000000000000000000
+  minPowerAttack: 03000000000000000000000000000000
+  maxPowerAttack: 07000000000000000000000000000000
+  goldLoot: 00000000000000000000000000000000
+  level: 00000000010000000200000003000000
+  speedAttack:
+  - 5
+  - 0
+  - 0
+  - 0
+  nameMonster:
+  - Waty
+  - 
+  - 
+  - 
+  spriteIdle:
+  - {fileID: 21300000, guid: 734d6cd8b952c20488eff91469685cfc, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  spriteHit:
+  - {fileID: 21300000, guid: 39cedced117147f4f9dd6347166f88e7, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

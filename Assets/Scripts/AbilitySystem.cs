@@ -79,7 +79,13 @@ public class AbilitySystem : MonoBehaviour
     public void LoadAbility()
     {
         costUpgrade = dataAbility.costUpgrade;
-        currentPower = dataAbility.power;
+
+        currentLevel = dataAbility.upgradeLevel;
+
+        if (currentLevel != 0)
+        {
+            currentPower = dataAbility.power;
+        }
 
         currentCooldown = dataAbility.timerCooldown;
 
@@ -97,9 +103,8 @@ public class AbilitySystem : MonoBehaviour
             costManaText.text = dataAbility.costMana.ToString();
         }
 
-        if (dataAbility.name != "Hit")
+        if (dataAbility.upgradeLevel == 0)
         {
-            currentLevel = 0;
             // griser / désactiver les pouvoirs qui n'ont pas été améliorés
         }
     }
@@ -111,7 +116,7 @@ public class AbilitySystem : MonoBehaviour
         {
             myPlayer.currentGold -= costUpgrade;
 
-            costUpgrade += costUpgrade+10;
+            costUpgrade += costUpgrade;
             currentPower += dataAbility.power;
             currentLevel += 1;
 

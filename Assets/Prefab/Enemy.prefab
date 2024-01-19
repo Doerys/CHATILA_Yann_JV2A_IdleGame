@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 60.200012, y: 20}
+  m_AnchoredPosition: {x: 48, y: 20}
   m_SizeDelta: {x: 150, y: 40}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &8022804236748913396
@@ -107,7 +107,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1884030296394492611}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -242,6 +242,7 @@ GameObject:
   - component: {fileID: 2514959584779674724}
   - component: {fileID: 8546651825167511242}
   - component: {fileID: 2273636524530688334}
+  - component: {fileID: 6532595181322834493}
   m_Layer: 5
   m_Name: HeartSprite
   m_TagString: Untagged
@@ -259,7 +260,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5586430225878085470}
   m_Father: {fileID: 1884030296394492611}
@@ -307,6 +308,27 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &6532595181322834493
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2740010705402631168}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 82a22d49206760a499367f7a90c45997, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2942503903056782797
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,6 +550,7 @@ GameObject:
   - component: {fileID: 2245042091645107419}
   - component: {fileID: 2759679839605221853}
   - component: {fileID: 8435750577823079593}
+  - component: {fileID: 4168676017467003476}
   m_Layer: 5
   m_Name: DamageSprite
   m_TagString: Untagged
@@ -545,16 +568,16 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1809793148465069913}
   m_Father: {fileID: 8192206596956431465}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 61.6, y: 0}
+  m_AnchoredPosition: {x: 32.6, y: 0.000045776367}
   m_SizeDelta: {x: 112.4, y: 100.3}
-  m_Pivot: {x: 1, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2759679839605221853
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -593,6 +616,27 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &4168676017467003476
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3343464349678977348}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 82a22d49206760a499367f7a90c45997, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4753493366796800001
 GameObject:
   m_ObjectHideFlags: 0
@@ -627,7 +671,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.524498, y: 0.4041748}
+  m_AnchoredPosition: {x: -0.52449036, y: 0.4041748}
   m_SizeDelta: {x: 145.6536, y: 36.8364}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7603222287619575306
@@ -855,16 +899,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allEnemiesDatas:
-  - {fileID: 11400000, guid: 4a5dd37c4b3a600419acbfac5d6ee99f, type: 2}
-  - {fileID: 11400000, guid: db527693ec066b045a0ff03e9eafb93d, type: 2}
-  - {fileID: 11400000, guid: feb807d6f609b954ea82b856831c4d70, type: 2}
+  - {fileID: 11400000, guid: e3e118c14eee5764fa9ac7d7a4699186, type: 2}
+  - {fileID: 11400000, guid: f38f1b81fb6b1424ba4426401efba7ca, type: 2}
+  - {fileID: 11400000, guid: 763402b6345e7ed46920d500e57ec2fc, type: 2}
+  - {fileID: 11400000, guid: 0d70019fb2233a846804fb1054046978, type: 2}
+  - {fileID: 11400000, guid: 526e687d345161b4db24f965a5aa7993, type: 2}
+  dataScene: {fileID: 0}
   myPlayer: {fileID: 0}
+  isActive: 0
   spriteEnemy: {fileID: 4331953697531152112}
   timerEnemyBar: {fileID: 5907565841934208642}
   powerAttackText: {fileID: 2639606017672607882}
   healthText: {fileID: 5621039796286941800}
   nameText: {fileID: 5974880029109516410}
   enemyAnimator: {fileID: 2352337122141588047}
+  heartAnimator: {fileID: 6532595181322834493}
+  hitAnimator: {fileID: 4168676017467003476}
 --- !u!1 &8694626605475347741
 GameObject:
   m_ObjectHideFlags: 0
@@ -899,7 +949,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.7, y: 0}
+  m_AnchoredPosition: {x: 2.699997, y: 0}
   m_SizeDelta: {x: 70, y: 37.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1696028362581093238

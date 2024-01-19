@@ -14,6 +14,7 @@ public class PlayerManager : MonoBehaviour
     public Image lifeBar, manaBar;
     public SceneManager sceneManager;
     public TextMeshProUGUI currentHealthText, currentManaText, goldText;
+    public Animator heartAnimator, manaAnimator;
 
     // Start is called before the first frame update
     void Start()
@@ -35,9 +36,8 @@ public class PlayerManager : MonoBehaviour
     public void ChangeHealth(int power, int damageOrHeal)
     {
         currentHealth += power * damageOrHeal;
-        ChangeUI(currentHealthText, currentHealth, maxHealth, lifeBar);
 
-        //Debug.Log(healthCurrent + "damage" + damage);
+        heartAnimator.SetFloat("currentStat", currentHealth / maxHealth);
 
         // si le soin dépasse la limite max de vie, réajuste au maximum
         if (currentHealth > maxHealth)
@@ -51,11 +51,15 @@ public class PlayerManager : MonoBehaviour
             currentHealth = 0;
             isAlive = false;
         }
+
+        ChangeUI(currentHealthText, currentHealth, maxHealth, lifeBar);
     }
 
     public void ChangeMana(int power, int costManaOrRegen)
     {
         currentMana += power * costManaOrRegen;
+
+        manaAnimator.SetFloat("currentStat", currentMana / maxMana);
 
         // si le soin dépasse la limite max de vie, réajuste au maximum
         if (currentMana > maxMana)
