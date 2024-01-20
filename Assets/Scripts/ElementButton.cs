@@ -66,83 +66,88 @@ public class ElementButton : MonoBehaviour
 
     public void ClickElementButton()
     {
-        // on remet tout à gris
-        for (int i = 0; i < myPlayer.allButtonElements.Length; i++) 
+        if (myPlayer.isAlive)
         {
-            ColorBlock colorsOthersButtons = myPlayer.allButtonElements[i].GetComponent<Button>().colors;
+            // on remet tout à gris
+            for (int i = 0; i < myPlayer.allButtonElements.Length; i++)
+            {
+                ColorBlock colorsOthersButtons = myPlayer.allButtonElements[i].GetComponent<Button>().colors;
 
-            colorsOthersButtons.normalColor = new Color(.6f, .6f, .6f);
+                colorsOthersButtons.normalColor = new Color(.6f, .6f, .6f);
 
-            myPlayer.allButtonElements[i].button.colors = colorsOthersButtons;
+                myPlayer.allButtonElements[i].button.colors = colorsOthersButtons;
 
-            myPlayer.allButtonElements[i].spriteButton.color = new Color (1f, 1f, 1f, .5f);
-        }
+                myPlayer.allButtonElements[i].spriteButton.color = new Color(1f, 1f, 1f, .5f);
+            }
 
-        spriteButton.color = new Color(1f, 1f, 1f, 1f);
+            spriteButton.color = new Color(1f, 1f, 1f, 1f);
 
-        // on colorise l'élément qu'on vient de select
-        switch (dataElement.element)
-        {
-            case ElementsPlayer.Fire:
-                colorsButton.normalColor = new Color(1f, .4f, .4f);
-                break;
-            case ElementsPlayer.Water:
-                colorsButton.normalColor = new Color(.4f, .6f, 1f);
-                break;
-            case ElementsPlayer.Thunder:
-                colorsButton.normalColor = new Color(.7f, .4f, 1f);
-                break;
-            case ElementsPlayer.Earth:
-                colorsButton.normalColor = new Color(1f, .7f, .4f);
-                break;
-            case ElementsPlayer.Light:
-                colorsButton.normalColor = new Color(1f, 1f, .4f);
-                break;
-            case ElementsPlayer.Nothing:
-                colorsButton.normalColor = new Color(.6f, .6f, .6f);
-                break;
-            default:
-                break;
-        }
-
-        button.colors = colorsButton;
-
-        // on change la couleur des dés
-        for (int i = 0;i < sceneData.allDices.Length; i++)
-        {
+            // on colorise l'élément qu'on vient de select
             switch (dataElement.element)
             {
                 case ElementsPlayer.Fire:
-                    sceneData.allDices[i].spriteAbility.sprite = sceneData.allDices[i].dataDice.elementalDices[0];
-                    sceneData.allDices[i].spriteAbilityCooldown.sprite = sceneData.allDices[i].dataDice.elementalDices[0];
+                    colorsButton.normalColor = new Color(1f, .4f, .4f);
                     break;
                 case ElementsPlayer.Water:
-                    sceneData.allDices[i].spriteAbility.sprite = sceneData.allDices[i].dataDice.elementalDices[1];
-                    sceneData.allDices[i].spriteAbilityCooldown.sprite = sceneData.allDices[i].dataDice.elementalDices[1];
+                    colorsButton.normalColor = new Color(.4f, .6f, 1f);
                     break;
                 case ElementsPlayer.Thunder:
-                    sceneData.allDices[i].spriteAbility.sprite = sceneData.allDices[i].dataDice.elementalDices[2];
-                    sceneData.allDices[i].spriteAbilityCooldown.sprite = sceneData.allDices[i].dataDice.elementalDices[2];
+                    colorsButton.normalColor = new Color(.7f, .4f, 1f);
                     break;
                 case ElementsPlayer.Earth:
-                    sceneData.allDices[i].spriteAbility.sprite = sceneData.allDices[i].dataDice.elementalDices[3];
-                    sceneData.allDices[i].spriteAbilityCooldown.sprite = sceneData.allDices[i].dataDice.elementalDices[3];
+                    colorsButton.normalColor = new Color(1f, .7f, .4f);
                     break;
                 case ElementsPlayer.Light:
-                    sceneData.allDices[i].spriteAbility.sprite = sceneData.allDices[i].dataDice.elementalDices[4];
-                    sceneData.allDices[i].spriteAbilityCooldown.sprite = sceneData.allDices[i].dataDice.elementalDices[4];
+                    colorsButton.normalColor = new Color(1f, 1f, .4f);
                     break;
                 case ElementsPlayer.Nothing:
-                    sceneData.allDices[i].spriteAbility.sprite = sceneData.allDices[i].dataDice.sprite;
-                    sceneData.allDices[i].spriteAbilityCooldown.sprite = sceneData.allDices[i].dataDice.sprite;
+                    colorsButton.normalColor = new Color(.6f, .6f, .6f);
                     break;
                 default:
                     break;
             }
-        }
 
-        // le joueur possède le nouveau élément
-        myPlayer.currentElement = dataElement.element;
+            button.colors = colorsButton;
+
+            // on change la couleur des dés
+            for (int i = 0; i < sceneData.allDices.Length; i++)
+            {
+                switch (dataElement.element)
+                {
+                    case ElementsPlayer.Fire:
+                        sceneData.allDices[i].spriteAbility.sprite = sceneData.allDices[i].dataDice.elementalDices[0];
+                        sceneData.allDices[i].spriteAbilityCooldown.sprite = sceneData.allDices[i].dataDice.elementalDices[0];
+                        break;
+                    case ElementsPlayer.Water:
+                        sceneData.allDices[i].spriteAbility.sprite = sceneData.allDices[i].dataDice.elementalDices[1];
+                        sceneData.allDices[i].spriteAbilityCooldown.sprite = sceneData.allDices[i].dataDice.elementalDices[1];
+                        break;
+                    case ElementsPlayer.Thunder:
+                        sceneData.allDices[i].spriteAbility.sprite = sceneData.allDices[i].dataDice.elementalDices[2];
+                        sceneData.allDices[i].spriteAbilityCooldown.sprite = sceneData.allDices[i].dataDice.elementalDices[2];
+                        break;
+                    case ElementsPlayer.Earth:
+                        sceneData.allDices[i].spriteAbility.sprite = sceneData.allDices[i].dataDice.elementalDices[3];
+                        sceneData.allDices[i].spriteAbilityCooldown.sprite = sceneData.allDices[i].dataDice.elementalDices[3];
+                        break;
+                    case ElementsPlayer.Light:
+                        sceneData.allDices[i].spriteAbility.sprite = sceneData.allDices[i].dataDice.elementalDices[4];
+                        sceneData.allDices[i].spriteAbilityCooldown.sprite = sceneData.allDices[i].dataDice.elementalDices[4];
+                        break;
+                    case ElementsPlayer.Nothing:
+                        sceneData.allDices[i].spriteAbility.sprite = sceneData.allDices[i].dataDice.sprite;
+                        sceneData.allDices[i].spriteAbilityCooldown.sprite = sceneData.allDices[i].dataDice.sprite;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            // le joueur possède le nouveau élément
+            myPlayer.currentElement = dataElement.element;
 
         }
+    }
+
+        
 }

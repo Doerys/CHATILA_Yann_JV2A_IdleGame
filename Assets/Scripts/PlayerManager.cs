@@ -14,7 +14,7 @@ public class PlayerManager : MonoBehaviour
     public bool isAlive, multiHitActive;
     public Image lifeBar, manaBar;
     public SceneManager sceneManager;
-    public TextMeshProUGUI currentHealthText, currentManaText, goldText, costUpgradeHealthText, costUpgradeManaText;
+    public TextMeshProUGUI currentHealthText, currentManaText, goldText, costUpgradeHealthText, costUpgradeManaText, gameOverText;
     public Animator heartAnimator, manaAnimator;
 
     public ElementButton[] allButtonElements;
@@ -29,6 +29,7 @@ public class PlayerManager : MonoBehaviour
         sceneManager = FindObjectOfType<SceneManager>();
         currentHealth = maxHealth;
         currentMana = maxMana;
+        gameOverText.gameObject.SetActive(false);
 
         ChangeUI(currentHealthText, currentHealth, maxHealth, lifeBar);
         ChangeUI(currentManaText, currentMana, maxMana, manaBar);
@@ -40,77 +41,88 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // change la couleur du costUpgradeHealthText en rouge si pas assez d'argent
-        if (currentGold >= costUpgradeHealth)
+        if (isAlive)
         {
-            costUpgradeHealthText.color = new Color(255, 255, 255);
-        }
-        else
-        {
-            costUpgradeHealthText.color = new Color(255, 0, 0);
-        }
+            // change la couleur du costUpgradeHealthText en rouge si pas assez d'argent
+            if (currentGold >= costUpgradeHealth)
+            {
+                costUpgradeHealthText.color = new Color(255, 255, 255);
+            }
+            else
+            {
+                costUpgradeHealthText.color = new Color(255, 0, 0);
+            }
 
-        // change la couleur du costUpgradeManaText en rouge si pas assez d'argent
-        if (currentGold >= costUpgradeMana)
-        {
-            costUpgradeManaText.color = new Color(255, 255, 255);
-        }
-        else
-        {
-            costUpgradeManaText.color = new Color(255, 0, 0);
+            // change la couleur du costUpgradeManaText en rouge si pas assez d'argent
+            if (currentGold >= costUpgradeMana)
+            {
+                costUpgradeManaText.color = new Color(255, 255, 255);
+            }
+            else
+            {
+                costUpgradeManaText.color = new Color(255, 0, 0);
+            }
         }
     }
 
     public void ChangeHealth(int power, int damageOrHeal)
     {
-        currentHealth += power * damageOrHeal;
-
-        heartAnimator.SetFloat("currentStat", currentHealth / maxHealth);
-
-        if (damageOrHeal > 0)
+        if (isAlive)
         {
-            particleSystemHeal.Play();
-        }
+            currentHealth += power * damageOrHeal;
 
-        // si le soin dépasse la limite max de vie, réajuste au maximum
-        if (currentHealth > maxHealth)
-        {
-            currentHealth = maxHealth;
-        }
+            heartAnimator.SetFloat("currentStat", currentHealth / maxHealth);
 
-        // si la vie arrive en dessous de 0
-        if (currentHealth <= 0)
-        {
-            currentHealth = 0;
-            isAlive = false;
-        }
+            if (damageOrHeal > 0)
+            {
+                particleSystemHeal.Play();
+            }
 
-        ChangeUI(currentHealthText, currentHealth, maxHealth, lifeBar);
+            // si le soin dépasse la limite max de vie, réajuste au maximum
+            if (currentHealth > maxHealth)
+            {
+                currentHealth = maxHealth;
+            }
+
+            // si la vie arrive en dessous de 0
+            if (currentHealth <= 0)
+            {
+                currentHealth = 0;
+                isAlive = false;
+
+                gameOverText.gameObject.SetActive(true);
+            }
+
+            ChangeUI(currentHealthText, currentHealth, maxHealth, lifeBar);
+        }
     }
 
     public void ChangeMana(int power, int costManaOrRegen)
     {
-        currentMana += power * costManaOrRegen;
-
-        manaAnimator.SetFloat("currentStat", currentMana / maxMana);
-
-        if (costManaOrRegen > 0)
+        if (isAlive)
         {
-            particleSystemMana.Play();
-        }
+            currentMana += power * costManaOrRegen;
 
-        // si le soin dépasse la limite max de vie, réajuste au maximum
-        if (currentMana > maxMana)
-        {
-            currentMana = maxMana;
-        }
+            manaAnimator.SetFloat("currentStat", currentMana / maxMana);
 
-        ChangeUI(currentManaText, currentMana, maxMana, manaBar);
+            if (costManaOrRegen > 0)
+            {
+                particleSystemMana.Play();
+            }
+
+            // si le soin dépasse la limite max de vie, réajuste au maximum
+            if (currentMana > maxMana)
+            {
+                currentMana = maxMana;
+            }
+
+            ChangeUI(currentManaText, currentMana, maxMana, manaBar);
+        }
     }
 
     public void UpgradeHealth()
     {
-        if (currentGold >= costUpgradeHealth)
+        if (currentGold >= costUpgradeHealth && isAlive)
         {
             currentGold -= costUpgradeHealth;
             goldText.text = currentGold.ToString();
@@ -129,7 +141,7 @@ public class PlayerManager : MonoBehaviour
 
     public void UpgradeMana()
     {
-        if (currentGold >= costUpgradeMana)
+        if (currentGold >= costUpgradeMana && isAlive)
         {
             currentGold -= costUpgradeMana;
             goldText.text = currentGold.ToString();

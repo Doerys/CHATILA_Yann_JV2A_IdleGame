@@ -46,19 +46,22 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timerAttack > 0 && health > 0 && isAlive)
+        if (myPlayer.isAlive)
         {
-            timerAttack -= Time.deltaTime;
-            timerEnemyBar.fillAmount = 1 - (timerAttack / enemyData.speedAttack[levelMonster]);
+            if (timerAttack > 0 && health > 0 && isAlive)
+            {
+                timerAttack -= Time.deltaTime;
+                timerEnemyBar.fillAmount = 1 - (timerAttack / enemyData.speedAttack[levelMonster]);
 
-            hitAnimator.SetFloat("cooldownAttack", 1 - (timerAttack / enemyData.speedAttack[levelMonster]));
-        }
+                hitAnimator.SetFloat("cooldownAttack", 1 - (timerAttack / enemyData.speedAttack[levelMonster]));
+            }
 
-        else if (health > 0 && isAlive)
-        {
-            myPlayer.ChangeHealth(powerAttack, -1);
-            timerAttack = enemyData.speedAttack[levelMonster];
-            hitAnimator.SetTrigger("hitEnemy");
+            else if (health > 0 && isAlive)
+            {
+                myPlayer.ChangeHealth(powerAttack, -1);
+                timerAttack = enemyData.speedAttack[levelMonster];
+                hitAnimator.SetTrigger("hitEnemy");
+            }
         }
     }
 

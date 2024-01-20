@@ -94,51 +94,54 @@ public class AbilitySystem : MonoBehaviour
 
     public void UpdateManager()
     {
-        // affichage UI upgrade
-        if (myPlayer.currentGold >= costUpgrade)
+        if(myPlayer.isAlive)
         {
-            costUpgradeText.color = new Color(255, 255, 255);
-        }
-        else
-        {
-            costUpgradeText.color = new Color(255, 0, 0);
-        }
-
-        // affichage UI mana
-        if (dataAbility.useMana)
-        {
-            if (myPlayer.currentMana >= costMana)
+            // affichage UI upgrade
+            if (myPlayer.currentGold >= costUpgrade)
             {
-                costManaText.color = new Color(255, 255, 255);
+                costUpgradeText.color = new Color(255, 255, 255);
             }
             else
             {
-                costManaText.color = new Color(255, 0, 0);
+                costUpgradeText.color = new Color(255, 0, 0);
             }
-        }
-        // cooldown visuel de la compétence
 
-        if (isCharging && currentCooldown > 0)
-        {
-            currentCooldown -= Time.deltaTime;
-            squareAbility.fillAmount = 1 - (currentCooldown / dataAbility.timerCooldown);
-            spriteAbility.fillAmount = 1 - (currentCooldown / dataAbility.timerCooldown);
-        }
-        else if (isCharging && currentCooldown <= 0)
-        {
-            if (!dataAbility.autoPower)
+            // affichage UI mana
+            if (dataAbility.useMana)
             {
-                isCharging = false;
-                isLocked = false;
+                if (myPlayer.currentMana >= costMana)
+                {
+                    costManaText.color = new Color(255, 255, 255);
+                }
+                else
+                {
+                    costManaText.color = new Color(255, 0, 0);
+                }
             }
-            currentCooldown = dataAbility.timerCooldown;
+            // cooldown visuel de la compétence
+
+            if (isCharging && currentCooldown > 0)
+            {
+                currentCooldown -= Time.deltaTime;
+                squareAbility.fillAmount = 1 - (currentCooldown / dataAbility.timerCooldown);
+                spriteAbility.fillAmount = 1 - (currentCooldown / dataAbility.timerCooldown);
+            }
+            else if (isCharging && currentCooldown <= 0)
+            {
+                if (!dataAbility.autoPower)
+                {
+                    isCharging = false;
+                    isLocked = false;
+                }
+                currentCooldown = dataAbility.timerCooldown;
+            }
         }
     }
 
     public void UpgradePower()
     {
         // si assez d'or => retrait d'or, amélioration
-        if (myPlayer.currentGold >= costUpgrade)
+        if (myPlayer.currentGold >= costUpgrade && myPlayer.isAlive)
         {
             myPlayer.StepUpChallenge();
 
@@ -276,6 +279,11 @@ public class AbilitySystem : MonoBehaviour
             }
 
             yield return new WaitForSeconds(1);
+
+            if (!myPlayer.isAlive)
+            {
+                break;
+            }
         }
     }
 
@@ -289,6 +297,11 @@ public class AbilitySystem : MonoBehaviour
             }
             
             yield return new WaitForSeconds(1);
+
+            if (!myPlayer.isAlive)
+            {
+                break;
+            }
         }
     }
 
@@ -323,6 +336,11 @@ public class AbilitySystem : MonoBehaviour
                 squareAbility.color = new Color(255, 255, 255);
 
                 isCharging = true;
+            }
+
+            if (!myPlayer.isAlive)
+            {
+                break;
             }
 
             yield return new WaitForSeconds(1);
