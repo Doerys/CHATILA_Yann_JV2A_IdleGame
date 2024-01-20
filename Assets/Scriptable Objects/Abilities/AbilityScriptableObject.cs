@@ -8,17 +8,17 @@ using UnityEngine.UI;
 public class AbilityScriptableObject : ScriptableObject
 {
     public string nameAbility;
-    public int upgradeLevel, costUpgrade, power, costMana;
+    public int costUpgrade, power, costMana;
     public float timerCooldown;
-    public bool useMana, autoPower;
+    public bool unlockOnStart, useMana, autoPower, timedPower, isDice;
     public Sprite sprite;
 
-    public void LaunchPower(int power, PlayerManager myPlayer)
+    public void LaunchPower(int power, PlayerManager myPlayer, AbilitySystem powerItself)
     {
-        CalledByAction(power, myPlayer);
+        CalledByAction(power, myPlayer, powerItself);
     }
 
-    public virtual void CalledByAction(int power, PlayerManager myPlayer)
+    protected virtual void CalledByAction(int power, PlayerManager myPlayer, AbilitySystem powerItself)
     {
 
     }

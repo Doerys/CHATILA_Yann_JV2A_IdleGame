@@ -21,7 +21,7 @@ public class EnemyManager : MonoBehaviour
 
     public Image spriteEnemy, timerEnemyBar;
     public TextMeshProUGUI powerAttackText, healthText, nameText;
-    public Animator enemyAnimator, heartAnimator, hitAnimator;
+    public Animator menuEnemyAnimator, spriteEnemyAnimator, heartAnimator, hitAnimator;
 
     // Start is called before the first frame update
     void Start()
@@ -37,8 +37,6 @@ public class EnemyManager : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-        
-        //StartCoroutine(CooldownSpawnEnemy());
     }
 
     // Update is called once per frame
@@ -58,7 +56,6 @@ public class EnemyManager : MonoBehaviour
             timerAttack = enemyData.speedAttack[levelMonster];
             hitAnimator.SetTrigger("hitEnemy");
         }
-        //LaunchAttack();
     }
 
     public void SpawnEnemy()
@@ -78,13 +75,8 @@ public class EnemyManager : MonoBehaviour
         nameText.text = enemyData.nameMonster[levelMonster];
         healthText.text = health.ToString();
         powerAttackText.text = powerAttack.ToString();
-    }
 
-    // timer decreasing before attack
-    public void LaunchAttack()
-    {
-
-
+        menuEnemyAnimator.SetTrigger("Pop");
     }
 
     public void ClickEnemy()
@@ -107,25 +99,78 @@ public class EnemyManager : MonoBehaviour
 
     public void GetHit(int powerPlayerAttack)
     {
-        health -= powerPlayerAttack;
-        healthText.text = health.ToString();
-
-        heartAnimator.SetTrigger("hitTrigger");
-        spriteEnemy.sprite = enemyData.spriteHit[levelMonster];
-
-        StartCoroutine(ReturnNormalSprite());
-
-        if (health <= 0)
+        if (health > 0)
         {
-            //StartCoroutine(CooldownSpawnEnemy());
-            SpawnEnemy();
-            myPlayer.LootGold(enemyData.goldLoot[levelMonster]);
+            // on check d'abord si le joueur a sélectionné le bon élément avant son attaque. Si oui : on double les dégâts
+
+            int vulnerabilityCheck = 1;
+
+            switch (myPlayer.currentElement)
+            {
+                case PlayerManager.ElementsPlayer.Fire:
+
+                    if (enemyData.elementVulnerability == ElementsPlayer.Fire)
+                    {
+                        vulnerabilityCheck = 2;
+                    }
+                    break;
+
+                case PlayerManager.ElementsPlayer.Water:
+
+                    if (enemyData.elementVulnerability == ElementsPlayer.Water)
+                    {
+                        vulnerabilityCheck = 2;
+                    }
+                    break;
+                case PlayerManager.ElementsPlayer.Thunder:
+
+                    if (enemyData.elementVulnerability == ElementsPlayer.Thunder)
+                    {
+                        vulnerabilityCheck = 2;
+                    }
+                    break;
+                case PlayerManager.ElementsPlayer.Earth:
+
+                    if (enemyData.elementVulnerability == ElementsPlayer.Earth)
+                    {
+                        vulnerabilityCheck = 2;
+                    }
+                    break;
+                case PlayerManager.ElementsPlayer.Light:
+
+                    if (enemyData.elementVulnerability == ElementsPlayer.Light)
+                    {
+                        vulnerabilityCheck = 2;
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            health -= powerPlayerAttack * vulnerabilityCheck;
+
+            heartAnimator.SetTrigger("hitTrigger");
+            spriteEnemy.sprite = enemyData.spriteHit[levelMonster];
+
+            StartCoroutine(ReturnNormalSprite());
+
+            if (health <= 0)
+            {
+                health = 0;
+
+                myPlayer.LootGold(enemyData.goldLoot[levelMonster]);
+                menuEnemyAnimator.SetTrigger("KillMob");
+
+                StartCoroutine(CooldownSpawnEnemy());
+            }
+
+            healthText.text = health.ToString();
         }
     }
     public IEnumerator CooldownSpawnEnemy ()
     {
-        yield return new WaitForSeconds(1);
-
+        yield return new WaitForSeconds(2);
+        
         SpawnEnemy();
     }
 

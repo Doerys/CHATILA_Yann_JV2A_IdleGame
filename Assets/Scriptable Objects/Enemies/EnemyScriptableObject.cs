@@ -12,5 +12,27 @@ public class EnemyScriptableObject : ScriptableObject
     public float [] speedAttack;
     public string [] nameMonster;
     public Sprite [] spriteIdle, spriteHit;
+    public ElementsEnemy elementEnemy;
+    public ElementsPlayer elementVulnerability;
 
+}
+
+public enum ElementsEnemy
+{
+    Nature,
+    Fire,
+    Water,
+    Earth,
+    Shadow,
+    Death
+}
+
+public enum ElementsPlayer
+{
+    Fire,
+    Water,
+    Thunder,
+    Earth,
+    Light,
+    Nothing
 }

@@ -12,28 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 802b265da1611cb4581f4ea4b486327b, type: 3}
   m_Name: shadowMonster
   m_EditorClassIdentifier: 
-  health: 0f000000000000000000000000000000
-  minPowerAttack: 08000000000000000000000000000000
-  maxPowerAttack: 0c000000000000000000000000000000
-  goldLoot: 00000000000000000000000000000000
+  health: 0f0000001e0000003c00000078000000
+  minPowerAttack: 080000000f0000001e0000003c000000
+  maxPowerAttack: 0c000000190000003200000064000000
+  goldLoot: 0a0000003c0000007d000000c8000000
   level: 00000000010000000200000003000000
   speedAttack:
   - 10
-  - 0
-  - 0
-  - 0
+  - 10
+  - 10
+  - 10
   nameMonster:
-  - Shadow
-  - 
-  - 
-  - 
+  - Shadow 1
+  - Shadow 2
+  - Shadow 3
+  - Shadow 4
   spriteIdle:
   - {fileID: 21300000, guid: a3131f78ebf776c43a8d6c9081d9f3e1, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: d54a27d8d8b9c874bbd7c3476ceeda44, type: 3}
+  - {fileID: 21300000, guid: d104426bd34127f479125a6862487ab8, type: 3}
+  - {fileID: 21300000, guid: c14495ea017087845896d01d8940c429, type: 3}
   spriteHit:
   - {fileID: 21300000, guid: 5581582c32ed1d241a1965621ee14e50, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 3ba8255384bbaf14dad6e5abfc8a4ab9, type: 3}
+  - {fileID: 21300000, guid: 2a0adee338ccdbb489479640cb21cdb8, type: 3}
+  - {fileID: 21300000, guid: c744647651729f8468196fb3ede8ca9a, type: 3}
+  elementEnemy: 4
+  elementVulnerability: 4

@@ -8,18 +8,8 @@ using UnityEngine.UI;
 
 public class MultiHit : AbilityScriptableObject
 {
-    public override void CalledByAction(int power, PlayerManager myPlayer)
+    protected override void CalledByAction(int power, PlayerManager myPlayer, AbilitySystem powerItself)
     {
-        //soin
-        myPlayer.currentHealth += power;
-
-        // si le soin dépasse la limite max de vie, réajuste au maximum
-        if (myPlayer.currentHealth > myPlayer.maxHealth)
-        {
-            myPlayer.currentHealth = myPlayer.maxHealth;
-        }
-
-        //changement d'UI
-        myPlayer.ChangeUI(myPlayer.currentHealthText, myPlayer.currentHealth, myPlayer.maxHealth, myPlayer.lifeBar);
+        powerItself.LaunchMultiHitCoroutine(power);
     }
 }

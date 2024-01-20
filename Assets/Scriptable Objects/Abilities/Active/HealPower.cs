@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class HealPower : AbilityScriptableObject
 {
-    public override void CalledByAction(int power, PlayerManager myPlayer)
+    protected override void CalledByAction(int power, PlayerManager myPlayer, AbilitySystem powerItself)
     {
         //soin
         myPlayer.ChangeHealth(power, 1);

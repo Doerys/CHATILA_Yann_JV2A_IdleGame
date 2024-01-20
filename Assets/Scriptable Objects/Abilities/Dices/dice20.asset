@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32b38c4d6c54607408dee2ab6575cb0e, type: 3}
   m_Name: dice20
   m_EditorClassIdentifier: 
-  nameAbility: 
-  upgradeLevel: 0
-  costUpgrade: 0
+  nameAbility: d20
+  costUpgrade: 1600
   power: 0
-  costMana: 0
-  timerCooldown: 2
+  costMana: 20
+  timerCooldown: 20
+  unlockOnStart: 0
   useMana: 1
   autoPower: 0
+  timedPower: 0
+  isDice: 1
   sprite: {fileID: 21300000, guid: 587b0e5b1ee515f42aa5490d18615c41, type: 3}
   maxValue: 1
   minValue: 20

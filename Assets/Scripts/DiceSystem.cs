@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -9,8 +10,6 @@ public class DiceSystem : AbilitySystem
 
     public EnemyManager [] listEnemies;
 
-    private int maxValue, minValue, powerDice;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -18,10 +17,6 @@ public class DiceSystem : AbilitySystem
         //gameObject.GetComponent<Image>().sprite = diceData.sprite;
 
         LoadAbility();
-
-        // load statistics
-        maxValue = dataDice.maxValue;
-        minValue = dataDice.minValue;
 
         listEnemies = dataScene.allEnemies;
     }
@@ -34,13 +29,29 @@ public class DiceSystem : AbilitySystem
 
     public void RollDice()
     {
-        powerDice = Random.Range(dataDice.minValue, dataDice.maxValue);
-
-        for (int i = 0; i < listEnemies.Length; i++)
+        if (myPlayer.currentMana >= costMana && !isCharging && !isLocked)
         {
-            listEnemies[i].GetHit(powerDice);
-        }
+            //consommation de mana
+            myPlayer.ChangeMana(dataAbility.costMana * currentPower, -1);
 
-        isCharging = true;
+            int powerDice = 0;
+
+            // on relance les dés autant de fois qu'on a amélioré la compétence
+            for (int i = 0;  i < currentPower; i++)
+            {
+                powerDice += Random.Range(dataDice.minValue, dataDice.maxValue);
+            }
+
+            for (int i = 0; i < listEnemies.Length; i++)
+            {
+
+                if (listEnemies[i].isActiveAndEnabled)
+                {
+                    listEnemies[i].GetHit(powerDice);
+                }
+            }
+
+            isCharging = true;
+        }
     }
 }

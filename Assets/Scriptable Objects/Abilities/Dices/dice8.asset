@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32b38c4d6c54607408dee2ab6575cb0e, type: 3}
   m_Name: dice8
   m_EditorClassIdentifier: 
-  nameAbility: 
-  upgradeLevel: 0
-  costUpgrade: 0
+  nameAbility: d8
+  costUpgrade: 200
   power: 0
-  costMana: 0
-  timerCooldown: 2
+  costMana: 8
+  timerCooldown: 8
+  unlockOnStart: 0
   useMana: 1
   autoPower: 0
+  timedPower: 0
+  isDice: 1
   sprite: {fileID: 21300000, guid: 5f58408e0717de641952adc49d8b37cf, type: 3}
   maxValue: 1
   minValue: 8

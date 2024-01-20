@@ -12,28 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 802b265da1611cb4581f4ea4b486327b, type: 3}
   m_Name: fireMonster
   m_EditorClassIdentifier: 
-  health: 05000000000000000000000000000000
-  minPowerAttack: 0d000000000000000000000000000000
-  maxPowerAttack: 11000000000000000000000000000000
-  goldLoot: 00000000000000000000000000000000
+  health: 050000000a0000001400000028000000
+  minPowerAttack: 0d000000190000003200000064000000
+  maxPowerAttack: 1100000023000000460000008c000000
+  goldLoot: 08000000320000005a00000096000000
   level: 00000000010000000200000003000000
   speedAttack:
   - 5
-  - 0
-  - 0
-  - 0
+  - 5
+  - 5
+  - 5
   nameMonster:
-  - Sparkle
-  - 
-  - 
-  - 
+  - Sparkle 1
+  - Sparkle 2
+  - Sparkle 3
+  - Sparkle 4
   spriteIdle:
   - {fileID: 21300000, guid: c9bf0b4f6d2b7a64ba9d64d4f3173414, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 7d1bf1307abe16549b598c57c26e215d, type: 3}
+  - {fileID: 21300000, guid: 7b2e28a276a892244994df34763b06f9, type: 3}
+  - {fileID: 21300000, guid: 76b6e04707d14cd40b43d38e39270c47, type: 3}
   spriteHit:
   - {fileID: 21300000, guid: 794d0468b29386c4cab99fc3e8ba0ca1, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 4f39803af557ee847a06451f0eea1e27, type: 3}
+  - {fileID: 21300000, guid: ba025ec8d0fc5ae479178e8010c2c00b, type: 3}
+  - {fileID: 21300000, guid: 915c6e2a8653bf44d9abf1af4fc40e31, type: 3}
+  elementEnemy: 1
+  elementVulnerability: 1

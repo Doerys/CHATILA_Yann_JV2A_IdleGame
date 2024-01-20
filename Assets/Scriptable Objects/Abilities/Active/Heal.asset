@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: Heal
   m_EditorClassIdentifier: 
   nameAbility: Heal
-  upgradeLevel: 1
-  costUpgrade: 5
-  power: 1
-  costMana: 10
+  costUpgrade: 50
+  power: 5
+  costMana: 5
   timerCooldown: 5
+  unlockOnStart: 0
   useMana: 1
   autoPower: 0
-  sprite: {fileID: 21300000, guid: 8ee0a87bb1860b043be1aeb354e1fd77, type: 3}
+  timedPower: 0
+  isDice: 0
+  sprite: {fileID: 21300000, guid: 62a6e850c75231c489627a7e9a3e7f2f, type: 3}

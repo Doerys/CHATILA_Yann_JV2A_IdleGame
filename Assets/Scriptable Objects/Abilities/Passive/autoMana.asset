@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: autoMana
   m_EditorClassIdentifier: 
   nameAbility: AutoMana
-  upgradeLevel: 0
-  costUpgrade: 5
+  costUpgrade: 200
   power: 1
   costMana: 0
   timerCooldown: 1
+  unlockOnStart: 1
   useMana: 0
   autoPower: 1
-  sprite: {fileID: 0}
+  timedPower: 0
+  isDice: 0
+  sprite: {fileID: 21300000, guid: 1b048d5ed10e40441861253625f9c3ea, type: 3}

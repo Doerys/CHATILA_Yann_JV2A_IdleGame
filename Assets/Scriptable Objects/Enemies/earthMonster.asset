@@ -12,28 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 802b265da1611cb4581f4ea4b486327b, type: 3}
   m_Name: earthMonster
   m_EditorClassIdentifier: 
-  health: 0f000000000000000000000000000000
-  minPowerAttack: 0d000000000000000000000000000000
-  maxPowerAttack: 11000000000000000000000000000000
-  goldLoot: 00000000000000000000000000000000
+  health: 0f0000001e0000003c00000078000000
+  minPowerAttack: 0d000000190000003200000064000000
+  maxPowerAttack: 1100000023000000460000008c000000
+  goldLoot: 08000000320000005a00000096000000
   level: 00000000010000000200000003000000
   speedAttack:
   - 15
-  - 0
-  - 0
-  - 0
+  - 15
+  - 15
+  - 15
   nameMonster:
-  - Dirty
-  - 
-  - 
-  - 
+  - Dirty 1
+  - Dirty 2
+  - Dirty 3
+  - Dirty 4
   spriteIdle:
   - {fileID: 21300000, guid: 9aab9dcc6c426954c8866d9167040cd5, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: f58d54136a27ef440a4770a37d5fd7d0, type: 3}
+  - {fileID: 21300000, guid: 6299ca8561ee9f745b2d5e2f83e10345, type: 3}
+  - {fileID: 21300000, guid: 7847f4de9faa9ca4d82843cfb876df22, type: 3}
   spriteHit:
   - {fileID: 21300000, guid: 8d2372791fdbdf445a7050fe573c155f, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 1d0909ec8c2c133458a322e675b00186, type: 3}
+  - {fileID: 21300000, guid: 3e16d04a348eb784d80bfa6c944ea585, type: 3}
+  - {fileID: 21300000, guid: 6f3ddee75dfa284439b53efefd19c719, type: 3}
+  elementEnemy: 3
+  elementVulnerability: 3

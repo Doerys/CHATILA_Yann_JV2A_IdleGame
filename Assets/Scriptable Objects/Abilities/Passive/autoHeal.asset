@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: autoHeal
   m_EditorClassIdentifier: 
   nameAbility: AutoHeal
-  upgradeLevel: 0
-  costUpgrade: 5
+  costUpgrade: 100
   power: 1
   costMana: 0
   timerCooldown: 1
+  unlockOnStart: 0
   useMana: 0
   autoPower: 1
-  sprite: {fileID: 21300000, guid: 8ee0a87bb1860b043be1aeb354e1fd77, type: 3}
+  timedPower: 0
+  isDice: 0
+  sprite: {fileID: 21300000, guid: 179a01fc8b7ffb149ae07e1b3f55cd8f, type: 3}

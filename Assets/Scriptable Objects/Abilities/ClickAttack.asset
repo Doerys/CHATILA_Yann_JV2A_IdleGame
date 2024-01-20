@@ -13,9 +13,13 @@ MonoBehaviour:
   m_Name: ClickAttack
   m_EditorClassIdentifier: 
   nameAbility: Hit
-  upgradeLevel: 0
-  costUpgrade: 0
-  upgradeStep: 0
+  costUpgrade: 25
+  power: 1
   costMana: 0
+  timerCooldown: 0
+  unlockOnStart: 1
   useMana: 0
+  autoPower: 0
+  timedPower: 0
+  isDice: 0
   sprite: {fileID: 21300000, guid: e69b6235c490e6a49ad74808aa2b4ef2, type: 3}

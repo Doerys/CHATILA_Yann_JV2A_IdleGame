@@ -12,28 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 802b265da1611cb4581f4ea4b486327b, type: 3}
   m_Name: waterMonster
   m_EditorClassIdentifier: 
-  health: 0a000000000000000000000000000000
-  minPowerAttack: 03000000000000000000000000000000
-  maxPowerAttack: 07000000000000000000000000000000
-  goldLoot: 00000000000000000000000000000000
+  health: 0a00000014000000280000003c000000
+  minPowerAttack: 03000000050000000a00000014000000
+  maxPowerAttack: 070000000f0000001e0000003c000000
+  goldLoot: 08000000320000005a00000096000000
   level: 00000000010000000200000003000000
   speedAttack:
   - 5
-  - 0
-  - 0
-  - 0
+  - 5
+  - 5
+  - 5
   nameMonster:
-  - Waty
-  - 
-  - 
-  - 
+  - Waty 1
+  - Waty 2
+  - Waty 3
+  - Waty B
   spriteIdle:
   - {fileID: 21300000, guid: 734d6cd8b952c20488eff91469685cfc, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: e7cdb953c2646f44badfec0a28dadd4b, type: 3}
+  - {fileID: 21300000, guid: 03ba104d74ba3044e97799498f163727, type: 3}
+  - {fileID: 21300000, guid: d4b08715d39b78d428f8c03deace8a8c, type: 3}
   spriteHit:
   - {fileID: 21300000, guid: 39cedced117147f4f9dd6347166f88e7, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: c51fb5116eff5a3458f6897ac6c6b063, type: 3}
+  - {fileID: 21300000, guid: 425ca4da7fbfd504b9e63fbc63dc06ab, type: 3}
+  - {fileID: 21300000, guid: 4f57b4e68d7f05845b676f465c33889a, type: 3}
+  elementEnemy: 2
+  elementVulnerability: 2
