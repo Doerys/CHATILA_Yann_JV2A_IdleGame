@@ -25,3 +25,9 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 704efd8ff546dd74a93f4bd04aeaac0b, type: 3}
   maxValue: 1
   minValue: 4
+  elementalDices:
+  - {fileID: 21300000, guid: 0d8b5c1040dd67b4bb14f4395f227ee5, type: 3}
+  - {fileID: 21300000, guid: 9f2361e211ffe604c8af403ae747b4b2, type: 3}
+  - {fileID: 21300000, guid: d3eb745b5d11d5a4b9aeeccf770cfb66, type: 3}
+  - {fileID: 21300000, guid: f26f3fb4ce23ede489c35802cb7d293d, type: 3}
+  - {fileID: 21300000, guid: 8958638a2ebdcd44d9689375013e4115, type: 3}

@@ -8,6 +8,8 @@ public class SceneManager : MonoBehaviour
     public EnemyManager[] allEnemies;
     public int currentDifficulty;
 
+    public DiceSystem[] allDices; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +17,7 @@ public class SceneManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
 
     }

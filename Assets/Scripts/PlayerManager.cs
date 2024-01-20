@@ -17,6 +17,10 @@ public class PlayerManager : MonoBehaviour
     public TextMeshProUGUI currentHealthText, currentManaText, goldText, costUpgradeHealthText, costUpgradeManaText;
     public Animator heartAnimator, manaAnimator;
 
+    public ElementButton[] allButtonElements;
+
+    public ParticleSystem particleSystemHeal, particleSystemMana;
+
     public ElementsPlayer currentElement;
 
     // Start is called before the first frame update
@@ -36,14 +40,6 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        //codes de triche
-        if (Input.GetKeyUp(KeyCode.R))
-        {
-            currentGold += 5000000;
-            goldText.text = currentGold.ToString();
-        }
-
         // change la couleur du costUpgradeHealthText en rouge si pas assez d'argent
         if (currentGold >= costUpgradeHealth)
         {
@@ -71,6 +67,11 @@ public class PlayerManager : MonoBehaviour
 
         heartAnimator.SetFloat("currentStat", currentHealth / maxHealth);
 
+        if (damageOrHeal > 0)
+        {
+            particleSystemHeal.Play();
+        }
+
         // si le soin dépasse la limite max de vie, réajuste au maximum
         if (currentHealth > maxHealth)
         {
@@ -92,6 +93,11 @@ public class PlayerManager : MonoBehaviour
         currentMana += power * costManaOrRegen;
 
         manaAnimator.SetFloat("currentStat", currentMana / maxMana);
+
+        if (costManaOrRegen > 0)
+        {
+            particleSystemMana.Play();
+        }
 
         // si le soin dépasse la limite max de vie, réajuste au maximum
         if (currentMana > maxMana)
@@ -184,12 +190,9 @@ public class PlayerManager : MonoBehaviour
         goldText.text = currentGold.ToString();
     }
 
-    public enum ElementsPlayer
+    public void CheatCode()
     {
-        Fire,
-        Water,
-        Thunder,
-        Earth,
-        Light
+        currentGold += 5000000;
+        goldText.text = currentGold.ToString();
     }
 }

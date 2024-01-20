@@ -26,13 +26,3 @@ public enum ElementsEnemy
     Shadow,
     Death
 }
-
-public enum ElementsPlayer
-{
-    Fire,
-    Water,
-    Thunder,
-    Earth,
-    Light,
-    Nothing
-}

@@ -8,4 +8,5 @@ using UnityEngine.UI;
 public class DicesScriptableObject : AbilityScriptableObject
 {
     public int maxValue, minValue;
+    public Sprite [] elementalDices;
 }

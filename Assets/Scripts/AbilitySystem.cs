@@ -301,6 +301,8 @@ public class AbilitySystem : MonoBehaviour
         squareAbility.color = new Color(0, 230, 255);
         spriteAbility.gameObject.SetActive(false);
 
+        myPlayer.multiHitActive = true;
+
         StartCoroutine(TimerMultiHit(power));
     }
 

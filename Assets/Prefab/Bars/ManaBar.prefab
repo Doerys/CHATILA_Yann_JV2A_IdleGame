@@ -144,6 +144,14 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8179746539873081317, guid: 9831e7014d5b1a4419a538ee50564466, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8179746539873081317, guid: 9831e7014d5b1a4419a538ee50564466, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d1060edacaa80204cb54f41399bf3f31, type: 2}
     - target: {fileID: 8887131768137730782, guid: 9831e7014d5b1a4419a538ee50564466, type: 3}
       propertyPath: m_Name
       value: ManaBar
