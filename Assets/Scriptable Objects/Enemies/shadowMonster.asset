@@ -23,10 +23,10 @@ MonoBehaviour:
   - 10
   - 10
   nameMonster:
-  - Shadow 1
-  - Shadow 2
-  - Shadow 3
-  - Shadow 4
+  - Shady
+  - Dork
+  - Emogothy
+  - Shadhorn
   spriteIdle:
   - {fileID: 21300000, guid: a3131f78ebf776c43a8d6c9081d9f3e1, type: 3}
   - {fileID: 21300000, guid: d54a27d8d8b9c874bbd7c3476ceeda44, type: 3}

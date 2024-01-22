@@ -10,7 +10,7 @@ public class AbilitySystem : MonoBehaviour
 {
     public AbilityScriptableObject dataAbility;
 
-    public SceneManager dataScene;
+    public SceneData dataScene;
 
     protected int costUpgrade, currentLevel, currentPower, costMana;
     private float currentCooldown, timerAbility;
@@ -44,7 +44,7 @@ public class AbilitySystem : MonoBehaviour
 
         myPlayer = FindObjectOfType<PlayerManager>();
 
-        dataScene = FindObjectOfType<SceneManager>();
+        dataScene = FindObjectOfType<SceneData>();
 
         spriteAbility.GetComponent<Image>().sprite = dataAbility.sprite;
         spriteAbilityCooldown.GetComponent<Image>().sprite = dataAbility.sprite;

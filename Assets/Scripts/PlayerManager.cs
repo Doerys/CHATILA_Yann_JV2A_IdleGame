@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -12,8 +13,8 @@ public class PlayerManager : MonoBehaviour
     public int upgradeAmount;
 
     public bool isAlive, multiHitActive;
-    public Image lifeBar, manaBar;
-    public SceneManager sceneManager;
+    public Image lifeBar, manaBar, restartGameButton;
+    public SceneData sceneManager;
     public TextMeshProUGUI currentHealthText, currentManaText, goldText, costUpgradeHealthText, costUpgradeManaText, gameOverText;
     public Animator heartAnimator, manaAnimator;
 
@@ -26,10 +27,14 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sceneManager = FindObjectOfType<SceneManager>();
+        sceneManager = FindObjectOfType<SceneData>();
         currentHealth = maxHealth;
         currentMana = maxMana;
         gameOverText.gameObject.SetActive(false);
+        restartGameButton.gameObject.SetActive(false);
+
+        DontDestroyOnLoad(gameOverText);
+        DontDestroyOnLoad(sceneManager.blackScreen);
 
         ChangeUI(currentHealthText, currentHealth, maxHealth, lifeBar);
         ChangeUI(currentManaText, currentMana, maxMana, manaBar);
@@ -91,6 +96,10 @@ public class PlayerManager : MonoBehaviour
                 isAlive = false;
 
                 gameOverText.gameObject.SetActive(true);
+
+                LaunchGameOverScene();
+
+                restartGameButton.gameObject.SetActive(true);
             }
 
             ChangeUI(currentHealthText, currentHealth, maxHealth, lifeBar);
@@ -206,5 +215,12 @@ public class PlayerManager : MonoBehaviour
     {
         currentGold += 5000000;
         goldText.text = currentGold.ToString();
+    }
+
+    public IEnumerator LaunchGameOverScene()
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        SceneManager.LoadScene("GameOverScene");
     }
 }

@@ -10,7 +10,7 @@ public class EnemyManager : MonoBehaviour
     public EnemyScriptableObject[] allEnemiesDatas;
     private EnemyScriptableObject enemyData;
 
-    public SceneManager dataScene;
+    public SceneData dataScene;
 
     public PlayerManager myPlayer;
 
@@ -31,7 +31,7 @@ public class EnemyManager : MonoBehaviour
     void Start()
     {
         myPlayer = FindObjectOfType<PlayerManager>();
-        dataScene = FindObjectOfType<SceneManager>();
+        dataScene = FindObjectOfType<SceneData>();
 
         if (isActive)
         {

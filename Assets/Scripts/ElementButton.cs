@@ -10,7 +10,7 @@ public class ElementButton : MonoBehaviour
     public ElementScriptableObject dataElement;
 
     public PlayerManager myPlayer;
-    public SceneManager sceneData;
+    public SceneData sceneData;
 
     public ColorBlock colorsButton;
 
@@ -22,7 +22,7 @@ public class ElementButton : MonoBehaviour
     {
         myPlayer = FindObjectOfType<PlayerManager>();
 
-        sceneData = FindObjectOfType<SceneManager>();
+        sceneData = FindObjectOfType<SceneData>();
 
         spriteButton.sprite = dataElement.spriteElement;
 

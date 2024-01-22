@@ -23,10 +23,10 @@ MonoBehaviour:
   - 5
   - 5
   nameMonster:
-  - Waty 1
-  - Waty 2
-  - Waty 3
-  - Waty B
+  - Droop
+  - Icecool
+  - Freezbrayn
+  - Icepaler
   spriteIdle:
   - {fileID: 21300000, guid: 734d6cd8b952c20488eff91469685cfc, type: 3}
   - {fileID: 21300000, guid: e7cdb953c2646f44badfec0a28dadd4b, type: 3}
