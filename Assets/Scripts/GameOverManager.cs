@@ -1,27 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class SceneData : MonoBehaviour
+public class GameOverManager : MonoBehaviour
 {
-    public EnemyManager[] allEnemies;
-    public int currentDifficulty;
-
-    public DiceSystem[] allDices;
-
     public Image blackScreen;
+    public Button restartButon;
 
     // Start is called before the first frame update
     void Start()
     {
-        currentDifficulty = 0;
+        
     }
 
     // Update is called once per frame
-    public void Update()
+    void Update()
     {
+        
+    }
 
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("SceneGame");
     }
 }

@@ -13,10 +13,10 @@ public class PlayerManager : MonoBehaviour
     public int upgradeAmount;
 
     public bool isAlive, multiHitActive;
-    public Image lifeBar, manaBar, restartGameButton;
+    public Image lifeBar, manaBar, gameOverImage;
     public SceneData sceneManager;
     public TextMeshProUGUI currentHealthText, currentManaText, goldText, costUpgradeHealthText, costUpgradeManaText, gameOverText;
-    public Animator heartAnimator, manaAnimator;
+    public Animator heartAnimator, manaAnimator, blackScreenAnimator;
 
     public ElementButton[] allButtonElements;
 
@@ -31,10 +31,7 @@ public class PlayerManager : MonoBehaviour
         currentHealth = maxHealth;
         currentMana = maxMana;
         gameOverText.gameObject.SetActive(false);
-        restartGameButton.gameObject.SetActive(false);
-
-        DontDestroyOnLoad(gameOverText);
-        DontDestroyOnLoad(sceneManager.blackScreen);
+        gameOverImage.gameObject.SetActive(false);
 
         ChangeUI(currentHealthText, currentHealth, maxHealth, lifeBar);
         ChangeUI(currentManaText, currentMana, maxMana, manaBar);
@@ -96,10 +93,11 @@ public class PlayerManager : MonoBehaviour
                 isAlive = false;
 
                 gameOverText.gameObject.SetActive(true);
+                gameOverImage.gameObject.SetActive(true);
 
-                LaunchGameOverScene();
+                blackScreenAnimator.SetTrigger("DeadTrigger");
 
-                restartGameButton.gameObject.SetActive(true);
+                StartCoroutine(LaunchGameOverScene());
             }
 
             ChangeUI(currentHealthText, currentHealth, maxHealth, lifeBar);
@@ -219,7 +217,7 @@ public class PlayerManager : MonoBehaviour
 
     public IEnumerator LaunchGameOverScene()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitUntil(() => sceneManager.blackScreen.color.a == 1);
 
         SceneManager.LoadScene("GameOverScene");
     }
