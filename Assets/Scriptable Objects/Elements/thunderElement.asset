@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteElement: {fileID: 21300000, guid: 2e0d5263459a3194db85304806a5f75d, type: 3}
   element: 2
+  audio: {fileID: 8300000, guid: 006bb08ece9ec864ea7c4a83cfbb7af7, type: 3}
+  colorElement: {r: 0.7, g: 0.4, b: 1, a: 1}

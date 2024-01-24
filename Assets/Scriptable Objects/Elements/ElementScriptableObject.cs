@@ -9,6 +9,10 @@ public class ElementScriptableObject : ScriptableObject
     public Sprite spriteElement;
 
     public ElementsPlayer element;
+
+    public AudioClip audio;
+
+    public Color colorElement;
 }
 
 public enum ElementsPlayer

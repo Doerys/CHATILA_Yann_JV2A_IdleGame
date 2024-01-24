@@ -61,6 +61,10 @@ public class AbilitySystem : MonoBehaviour
                 StartCoroutine(AutoRegen());
             }
         }
+        else
+        {
+            isLocked = true;
+        }
 
         // si utilise du mana : on charge le coût en mana
         if (dataAbility.useMana)
@@ -157,8 +161,10 @@ public class AbilitySystem : MonoBehaviour
             // pour les capacités utilisant de la mana, et qui ne sont pas des dés, on augmente proportionnellement leur puissance
             if (dataAbility.useMana && !dataAbility.isDice) 
             {
+                // au niveau 1, on débloque
                 if (currentLevel == 1)
                 {
+                    isLocked = false;
                     currentPower += dataAbility.power;
 
                     if (dataAbility.nameAbility == "Heal")
@@ -170,6 +176,8 @@ public class AbilitySystem : MonoBehaviour
                         costMana = dataAbility.costMana * currentLevel;
                     }
                 }
+
+                // au-delà du niveau 1
                 else
                 {                    
                     if (dataAbility.nameAbility == "Heal")
@@ -191,8 +199,14 @@ public class AbilitySystem : MonoBehaviour
             {
                 currentPower++;
 
+                // pour les dés
                 if (dataAbility.isDice)
                 {
+                    if (currentLevel == 1)
+                    {
+                        isLocked = false;
+                    }
+
                     costMana = dataAbility.costMana * currentPower;
                     costManaText.text = costMana.ToString();
 

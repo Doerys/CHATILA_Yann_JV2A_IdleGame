@@ -25,7 +25,9 @@ public class EnemyManager : MonoBehaviour
 
     public ParticleSystem particleSystemEnemy;
 
-    public Material[] elementalMaterials; 
+    public Material[] elementalMaterials;
+
+    public AudioSource hitSound;
 
     // Start is called before the first frame update
     void Start()
@@ -61,6 +63,7 @@ public class EnemyManager : MonoBehaviour
                 myPlayer.ChangeHealth(powerAttack, -1);
                 timerAttack = enemyData.speedAttack[levelMonster];
                 hitAnimator.SetTrigger("hitEnemy");
+                hitSound.Play();
             }
         }
     }

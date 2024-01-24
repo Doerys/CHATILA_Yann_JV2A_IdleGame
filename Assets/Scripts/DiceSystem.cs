@@ -3,12 +3,23 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class DiceSystem : AbilitySystem
 {
     public DicesScriptableObject dataDice;
 
     public EnemyManager [] listEnemies;
+
+    public AudioSource diceSound;
+
+    public Image diceRollAlert;
+    public TextMeshProUGUI diceRollAlertText;
+
+    public Color elementalColor;
+
+    public Animator animatorDice;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +42,8 @@ public class DiceSystem : AbilitySystem
     {
         if (myPlayer.currentMana >= costMana && !isCharging && !isLocked)
         {
+            diceSound.Play();
+
             //consommation de mana
             myPlayer.ChangeMana(dataAbility.costMana * currentPower, -1);
 
@@ -41,6 +54,16 @@ public class DiceSystem : AbilitySystem
             {
                 powerDice += Random.Range(dataDice.minValue, dataDice.maxValue);
             }
+
+            diceRollAlert.sprite = spriteAbility.sprite;
+            diceRollAlertText.color = elementalColor;
+            //diceRollAlertText.color = Color.blue;
+
+            diceRollAlertText.text = powerDice.ToString();
+
+            animatorDice.SetTrigger("TriggerRoll");
+
+            StartCoroutine(IdleAnimation());
 
             for (int i = 0; i < listEnemies.Length; i++)
             {
@@ -53,5 +76,11 @@ public class DiceSystem : AbilitySystem
 
             isCharging = true;
         }
+    }
+    public IEnumerator IdleAnimation()
+    {
+        yield return new WaitUntil(() => diceRollAlert.color.a == 0);
+
+        animatorDice.SetTrigger("IddleAnimation");
     }
 }

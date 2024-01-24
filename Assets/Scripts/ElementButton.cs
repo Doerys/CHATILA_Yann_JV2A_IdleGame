@@ -17,36 +17,39 @@ public class ElementButton : MonoBehaviour
     public Image spriteButton, squareButton;
     public Button button;
 
+    public AudioSource myAudioSource;
+
     // Start is called before the first frame update
     void Start()
     {
         myPlayer = FindObjectOfType<PlayerManager>();
-
         sceneData = FindObjectOfType<SceneData>();
 
         spriteButton.sprite = dataElement.spriteElement;
 
         colorsButton = GetComponent<Button>().colors;
-
         colorsButton.normalColor = new Color(.6f, .6f, .6f);
+
+        myAudioSource = gameObject.GetComponent<AudioSource>();
+        myAudioSource.clip = dataElement.audio;
 
         // on colorise l'élément qu'on vient de select
         switch (dataElement.element)
         {
             case ElementsPlayer.Fire:
-                colorsButton.selectedColor = new Color(1f, .4f, .4f);
+                colorsButton.selectedColor = dataElement.colorElement;
                 break;
             case ElementsPlayer.Water:
-                colorsButton.selectedColor = new Color(.4f, .6f, 1f);
+                colorsButton.selectedColor = dataElement.colorElement;
                 break;
             case ElementsPlayer.Thunder:
-                colorsButton.selectedColor = new Color(.7f, .4f, 1f);
+                colorsButton.selectedColor = dataElement.colorElement;
                 break;
             case ElementsPlayer.Earth:
-                colorsButton.selectedColor = new Color(1f, .7f, .4f);
+                colorsButton.selectedColor = dataElement.colorElement;
                 break;
             case ElementsPlayer.Light:
-                colorsButton.selectedColor = new Color(1f, 1f, .4f);
+                colorsButton.selectedColor = dataElement.colorElement;
                 break;
             case ElementsPlayer.Nothing:
                 colorsButton.selectedColor = new Color(.6f, .6f, .6f);
@@ -68,6 +71,8 @@ public class ElementButton : MonoBehaviour
     {
         if (myPlayer.isAlive)
         {
+            myAudioSource.Play();
+
             // on remet tout à gris
             for (int i = 0; i < myPlayer.allButtonElements.Length; i++)
             {
@@ -86,19 +91,19 @@ public class ElementButton : MonoBehaviour
             switch (dataElement.element)
             {
                 case ElementsPlayer.Fire:
-                    colorsButton.normalColor = new Color(1f, .4f, .4f);
+                    colorsButton.normalColor = dataElement.colorElement;
                     break;
                 case ElementsPlayer.Water:
-                    colorsButton.normalColor = new Color(.4f, .6f, 1f);
+                    colorsButton.normalColor = dataElement.colorElement;
                     break;
                 case ElementsPlayer.Thunder:
-                    colorsButton.normalColor = new Color(.7f, .4f, 1f);
+                    colorsButton.normalColor = dataElement.colorElement;
                     break;
                 case ElementsPlayer.Earth:
-                    colorsButton.normalColor = new Color(1f, .7f, .4f);
+                    colorsButton.normalColor = dataElement.colorElement;
                     break;
                 case ElementsPlayer.Light:
-                    colorsButton.normalColor = new Color(1f, 1f, .4f);
+                    colorsButton.normalColor = dataElement.colorElement;
                     break;
                 case ElementsPlayer.Nothing:
                     colorsButton.normalColor = new Color(.6f, .6f, .6f);
@@ -141,6 +146,7 @@ public class ElementButton : MonoBehaviour
                     default:
                         break;
                 }
+                sceneData.allDices[i].elementalColor = dataElement.colorElement;
             }
 
             // le joueur possède le nouveau élément

@@ -33,7 +33,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f711d41f3d4aa2443a019245c2835d3d, type: 3}
   - {fileID: 21300000, guid: dcc645f7eccbef94582f165d351cf6f6, type: 3}
   spriteHit:
-  - {fileID: 21300000, guid: d37f8c49b783b194dae222999914feca, type: 3}
+  - {fileID: 21300000, guid: f7f76babfd10a1c44af0aa7cb024e088, type: 3}
   - {fileID: 21300000, guid: 032f472069c018d4e9aab2db2670be8a, type: 3}
   - {fileID: 21300000, guid: e04b8d8298504b846a3b4cf3eeb6f9d6, type: 3}
   - {fileID: 21300000, guid: 0045fb053ee0e5441bb8c7cfe113a416, type: 3}

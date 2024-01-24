@@ -305,6 +305,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 3290675011256548031, guid: be7ead7aabb8fcc4aafb9bdb0389d37f, type: 3}
     - {fileID: 6831507495684656175, guid: be7ead7aabb8fcc4aafb9bdb0389d37f, type: 3}
+    - {fileID: 2036478793998006171, guid: be7ead7aabb8fcc4aafb9bdb0389d37f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5838962893190864366, guid: be7ead7aabb8fcc4aafb9bdb0389d37f, type: 3}
@@ -314,6 +315,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1548558521128603275, guid: be7ead7aabb8fcc4aafb9bdb0389d37f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5593518945763439615}
+    - targetCorrespondingSourceObject: {fileID: 1548558521128603275, guid: be7ead7aabb8fcc4aafb9bdb0389d37f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4192890029545121324}
   m_SourcePrefab: {fileID: 100100000, guid: be7ead7aabb8fcc4aafb9bdb0389d37f, type: 3}
 --- !u!114 &840677237813951083 stripped
 MonoBehaviour:
@@ -418,7 +422,113 @@ MonoBehaviour:
   myPlayer: {fileID: 0}
   timerTextAnimator: {fileID: 0}
   dataDice: {fileID: 0}
-  listEnemies: []
+  listEnemies:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  diceSound: {fileID: 4192890029545121324}
+  diceRollAlert: {fileID: 0}
+  diceRollAlertText: {fileID: 0}
+  elementalColor: {r: 1, g: 1, b: 1, a: 0}
+--- !u!82 &4192890029545121324
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6607130001958688983}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 1647f757b6fce60499e85a2d7bb6cab2, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 125
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &7547449252003303450 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2770071547843790406, guid: be7ead7aabb8fcc4aafb9bdb0389d37f, type: 3}

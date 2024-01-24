@@ -561,6 +561,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6423343089766451467}
     - target: {fileID: 5638167076278517840, guid: 562208296d77eb2418386b9358bfea05, type: 3}
+      propertyPath: multiplyText
+      value: 
+      objectReference: {fileID: 4719466465669911005}
+    - target: {fileID: 5638167076278517840, guid: 562208296d77eb2418386b9358bfea05, type: 3}
       propertyPath: buttonManaBis
       value: 
       objectReference: {fileID: 6160101788844521823}
@@ -568,6 +572,10 @@ PrefabInstance:
       propertyPath: timerAbilityText
       value: 
       objectReference: {fileID: 4719466465669911005}
+    - target: {fileID: 5638167076278517840, guid: 562208296d77eb2418386b9358bfea05, type: 3}
+      propertyPath: timerTextAnimator
+      value: 
+      objectReference: {fileID: 2856607101423726876}
     - target: {fileID: 6167310023554572360, guid: 562208296d77eb2418386b9358bfea05, type: 3}
       propertyPath: m_Sprite
       value: 

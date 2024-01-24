@@ -24,6 +24,10 @@ public class PlayerManager : MonoBehaviour
 
     public ElementsPlayer currentElement;
 
+    public AudioSource gameOverSound, useManaSound, upgradeSound;
+
+    public AudioSource music;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -98,6 +102,8 @@ public class PlayerManager : MonoBehaviour
                 blackScreenAnimator.SetTrigger("DeadTrigger");
 
                 StartCoroutine(LaunchGameOverScene());
+
+                gameOverSound.Play();
             }
 
             ChangeUI(currentHealthText, currentHealth, maxHealth, lifeBar);
@@ -116,6 +122,10 @@ public class PlayerManager : MonoBehaviour
             {
                 particleSystemMana.Play();
             }
+            else
+            {
+                useManaSound.Play();
+            }
 
             // si le soin dépasse la limite max de vie, réajuste au maximum
             if (currentMana > maxMana)
@@ -131,6 +141,8 @@ public class PlayerManager : MonoBehaviour
     {
         if (currentGold >= costUpgradeHealth && isAlive)
         {
+            upgradeSound.Play();
+
             currentGold -= costUpgradeHealth;
             goldText.text = currentGold.ToString();
 
@@ -150,6 +162,8 @@ public class PlayerManager : MonoBehaviour
     {
         if (currentGold >= costUpgradeMana && isAlive)
         {
+            upgradeSound.Play();
+
             currentGold -= costUpgradeMana;
             goldText.text = currentGold.ToString();
 
