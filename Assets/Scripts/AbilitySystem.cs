@@ -149,6 +149,8 @@ public class AbilitySystem : MonoBehaviour
         {
             myPlayer.StepUpChallenge();
 
+            myPlayer.upgradeSound.Play();
+
             myPlayer.currentGold -= costUpgrade;
             myPlayer.goldText.text = myPlayer.currentGold.ToString();
 

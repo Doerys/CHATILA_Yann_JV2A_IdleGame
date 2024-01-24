@@ -191,19 +191,19 @@ public class PlayerManager : MonoBehaviour
             sceneManager.allEnemies[2].gameObject.SetActive(true);
             sceneManager.allEnemies[2].SpawnEnemy();
         }
-        else if (upgradeAmount == 15)
+        else if (upgradeAmount == 10)
         {
             sceneManager.currentDifficulty = 1;
             sceneManager.allEnemies[3].gameObject.SetActive(true);
             sceneManager.allEnemies[3].SpawnEnemy();
         }
-        else if (upgradeAmount == 30)
+        else if (upgradeAmount == 15)
         {
             sceneManager.currentDifficulty = 2;
             sceneManager.allEnemies[4].gameObject.SetActive(true);
             sceneManager.allEnemies[4].SpawnEnemy();
         }
-        else if (upgradeAmount == 45)
+        else if (upgradeAmount == 25)
         {
             sceneManager.currentDifficulty = 3;
             sceneManager.allEnemies[5].gameObject.SetActive(true);
