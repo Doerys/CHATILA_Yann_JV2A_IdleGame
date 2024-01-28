@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class GameOverManager : MonoBehaviour
 {
-    public Image blackScreen;
     public Button restartButon;
 
     // Start is called before the first frame update

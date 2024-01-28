@@ -513,7 +513,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: panel_Gameover
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4187416520251947438, guid: 875f86a1d5d89c84a93daed517030126, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
